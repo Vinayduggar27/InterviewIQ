@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-slate-950">
       <div className="max-w-5xl text-center">
@@ -33,11 +35,21 @@ export default function Hero() {
           className="mt-10 flex justify-center gap-5"
         >
           <button className="bg-cyan-400 hover:bg-cyan-300 text-black px-8 py-4 rounded-xl font-semibold transition">
-            Start Free
+            <button
+  onClick={() => navigate("/register")}
+  className="bg-cyan-500 hover:bg-cyan-400 px-8 py-4 rounded-xl font-semibold transition"
+>
+  Start Free
+</button>
           </button>
 
           <button className="border border-slate-700 hover:border-cyan-400 px-8 py-4 rounded-xl text-white transition">
-            Watch Demo
+            <button
+  onClick={() => navigate("/login")}
+  className="border border-slate-700 hover:border-cyan-400 px-8 py-4 rounded-xl transition"
+>
+  Watch Demo
+</button>
           </button>
         </motion.div>
 

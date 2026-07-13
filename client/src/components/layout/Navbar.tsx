@@ -34,11 +34,21 @@ function Navbar() {
         {/* Buttons */}
         <div className="flex gap-4">
           <button className="text-slate-300 hover:text-white transition">
-            Login
+            <Link
+  to="/login"
+  className="text-slate-300 hover:text-cyan-400 transition"
+>
+  Login
+</Link>
           </button>
 
           <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2 rounded-xl transition">
-            Get Started
+            <Link
+  to="/register"
+  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-3 rounded-xl font-semibold transition"
+>
+  Get Started
+</Link>
           </button>
         </div>
       </div>
