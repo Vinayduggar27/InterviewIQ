@@ -1,4 +1,5 @@
 import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 
 export default function QuickActions() {
   return (
@@ -11,7 +12,11 @@ export default function QuickActions() {
       <div className="space-y-4">
 
         <Button className="w-full">
-          Start AI Interview
+          <Link to="/interview">
+  <button className="w-full bg-cyan-500 hover:bg-cyan-400 rounded-xl py-4 font-semibold transition">
+    Start AI Interview
+  </button>
+</Link>
         </Button>
 
         <Button className="w-full">
