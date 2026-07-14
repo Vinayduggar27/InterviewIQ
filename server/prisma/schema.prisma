@@ -8,9 +8,31 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  password     String
+
+  role         String?
+  experience   String?
+  skills       String?
+  avatar       String?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  interviews Interview[]
+}
+model Interview {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  experience  Int
+  techStack   String
+  questions   Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId      String
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
