@@ -3,21 +3,25 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import Input from "../ui/Input";
 
 interface PasswordInputProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
 export default function PasswordInput({
-  placeholder = "Password",
+  value,
+  onChange,
+  placeholder = "Enter your password",
 }: PasswordInputProps) {
-
   const [show, setShow] = useState(false);
 
   return (
     <div className="relative">
-
       <Input
         type={show ? "text" : "password"}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
       />
 
       <button
@@ -27,7 +31,6 @@ export default function PasswordInput({
       >
         {show ? <FiEyeOff /> : <FiEye />}
       </button>
-
     </div>
   );
 }
