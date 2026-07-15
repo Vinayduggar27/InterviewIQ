@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth.middleware";
-import { generateInterviewQuestions } from "../services/groq.service";
+import {
+  generateInterviewQuestions,
+  evaluateInterviewAnswers,
+} from "../services/groq.service";
 
 export const createInterview = async (
   req: AuthRequest,
@@ -118,6 +121,42 @@ export const generateQuestions = async (
 
     return res.status(500).json({
       message: "Failed to generate questions",
+    });
+  }
+};
+export const evaluateInterview = async (
+  req: AuthRequest,
+  res: Response
+) => {
+  try {
+    const interview = await prisma.interview.findFirst({
+      where: {
+        id: req.params.id as string,
+        userId: req.userId,
+      },
+    });
+
+    if (!interview) {
+      return res.status(404).json({
+        message: "Interview not found",
+      });
+    }
+
+    const { answers } = req.body;
+
+   const result = await evaluateInterviewAnswers(
+  interview.questions as string[],
+  answers,
+  interview.role
+);
+
+return res.json(result);
+
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Server Error",
     });
   }
 };
