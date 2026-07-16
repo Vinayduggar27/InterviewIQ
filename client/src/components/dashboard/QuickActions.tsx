@@ -10,7 +10,7 @@ export default function QuickActions() {
 
       <div className="space-y-4">
 
-        <Link to="/interview">
+        <Link to="/create-interview">
           <Button className="w-full">
             Start AI Interview
           </Button>

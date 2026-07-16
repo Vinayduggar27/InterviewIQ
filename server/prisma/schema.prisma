@@ -35,4 +35,17 @@ model Interview {
 
   userId      String
   user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  overallScore        Int?
+technicalScore      Int?
+communicationScore  Int?
+confidenceScore     Int?
+
+feedback            String?
+
+strengths           Json?
+weaknesses          Json?
+
+answers             Json?
+
+completedAt         DateTime?
 }

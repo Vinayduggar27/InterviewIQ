@@ -149,6 +149,26 @@ export const evaluateInterview = async (
   answers,
   interview.role
 );
+await prisma.interview.update({
+  where: {
+    id: interview.id,
+  },
+  data: {
+    answers,
+
+    overallScore: result.overallScore,
+    technicalScore: result.technicalScore,
+    communicationScore: result.communicationScore,
+    confidenceScore: result.confidenceScore,
+
+    feedback: result.feedback,
+
+    strengths: result.strengths,
+    weaknesses: result.weaknesses,
+
+    completedAt: new Date(),
+  },
+});
 
 return res.json(result);
 

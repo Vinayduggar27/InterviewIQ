@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useSpeechRecognition from "../../hooks/useSpeechRecognition";
 
-export default function AnswerBox() {
-  const [answer, setAnswer] = useState("");
+interface AnswerBoxProps {
+  answer: string;
+  setAnswer: (value: string) => void;
+}
 
+export default function AnswerBox({
+  answer,
+  setAnswer,
+}: AnswerBoxProps) {
   const {
     transcript,
     listening,
@@ -15,13 +21,11 @@ export default function AnswerBox() {
     if (transcript) {
       setAnswer(transcript);
     }
-  }, [transcript]);
+  }, [transcript, setAnswer]);
 
   return (
     <div className="bg-slate-900 rounded-xl p-6">
-
       <div className="flex justify-between items-center mb-4">
-
         <h2 className="text-xl font-semibold">
           Your Answer
         </h2>
@@ -36,7 +40,6 @@ export default function AnswerBox() {
         >
           {listening ? "Stop Mic" : "Start Mic"}
         </button>
-
       </div>
 
       <textarea
@@ -47,11 +50,8 @@ export default function AnswerBox() {
       />
 
       <div className="mt-3 text-sm text-slate-400">
-
         {answer.length} Characters
-
       </div>
-
     </div>
   );
 }

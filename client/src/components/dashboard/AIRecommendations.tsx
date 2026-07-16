@@ -1,36 +1,46 @@
-import { Sparkles } from "lucide-react";
+type Interview = {
+  overallScore: number | null;
+};
 
-export default function AIRecommendations() {
+type Props = {
+  interviews: Interview[];
+};
+
+export default function AIRecommendations({
+  interviews,
+}: Props) {
+  const average =
+    interviews.length === 0
+      ? 0
+      : interviews.reduce(
+          (sum, i) => sum + (i.overallScore ?? 0),
+          0
+        ) / interviews.length;
+
+  let recommendation =
+    "Keep practicing consistently.";
+
+  if (average >= 90)
+    recommendation =
+      "Excellent work! Start preparing for FAANG-level interviews.";
+
+  else if (average >= 75)
+    recommendation =
+      "Good progress. Focus on DSA and System Design.";
+
+  else if (average > 0)
+    recommendation =
+      "Spend more time strengthening core CS fundamentals.";
+
   return (
-    <div className="bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-800">
-      <div className="flex items-center gap-2 mb-5">
-        <Sparkles className="text-cyan-400" size={22} />
-        <h2 className="text-2xl font-bold">AI Coach</h2>
-      </div>
+    <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+      <h2 className="text-2xl font-semibold mb-6">
+        AI Recommendation
+      </h2>
 
-      <p className="text-slate-400 mb-6">
-        Personalized recommendations based on your recent interviews.
+      <p className="text-slate-300 leading-7">
+        {recommendation}
       </p>
-
-      <div className="space-y-3">
-
-        <div className="bg-slate-800 rounded-xl p-3">
-          ✅ Focus on Dynamic Programming
-        </div>
-
-        <div className="bg-slate-800 rounded-xl p-3">
-          ✅ Improve HR Communication
-        </div>
-
-        <div className="bg-slate-800 rounded-xl p-3">
-          ✅ Practice Behavioral Questions
-        </div>
-
-      </div>
-
-      <button className="mt-6 w-full rounded-xl bg-cyan-500 hover:bg-cyan-400 transition py-3 font-semibold">
-        Start Recommended Interview
-      </button>
     </div>
   );
 }

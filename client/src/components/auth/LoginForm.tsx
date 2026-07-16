@@ -19,10 +19,11 @@ export default function LoginForm() {
       const data = await loginUser(email, password);
 
       localStorage.setItem("token", data.token);
+localStorage.setItem("userName", data.user.name);
 
-      alert("Login Successful");
+alert("Login Successful");
 
-      navigate("/dashboard");
+navigate("/dashboard");
     } catch (err) {
       console.error(err);
       alert("Login Failed");

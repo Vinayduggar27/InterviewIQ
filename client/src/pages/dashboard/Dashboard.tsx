@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getDashboardStats } from "../../services/dashboardservice";
 
 import Sidebar from "../../components/dashboard/Sidebar";
 import Topbar from "../../components/dashboard/Topbar";
@@ -9,16 +10,20 @@ import QuickActions from "../../components/dashboard/QuickActions";
 import ActivityFeed from "../../components/dashboard/ActivityFeed";
 import AIRecommendations from "../../components/dashboard/AIRecommendations";
 
+
 import { getInterviews } from "../../services/interviewservice";
 
 export default function Dashboard() {
   const [interviews, setInterviews] = useState<any[]>([]);
+  const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
     const loadInterviews = async () => {
       try {
         const data = await getInterviews();
         setInterviews(data);
+        const dashboardData = await getDashboardStats();
+setStats(dashboardData);
       } catch (err) {
         console.error(err);
       }
@@ -27,32 +32,41 @@ export default function Dashboard() {
     loadInterviews();
   }, []);
 
-  return (
-    <div className="min-h-screen bg-slate-950 text-white flex">
+ return (
+  <div className="min-h-screen bg-slate-950 text-white flex">
       <Sidebar />
 
       <main className="flex-1">
         <Topbar />
 
         <div className="p-8">
-          <h1 className="text-4xl font-bold">
-            Welcome Back 👋
-          </h1>
-
-          <p className="text-slate-400 mt-2">
-            Here's your interview performance.
-          </p>
+         
 
           <div className="grid md:grid-cols-4 gap-6 mt-8">
-            <StatCard title="Interviews" value="28" />
-            <StatCard title="Average Score" value="89%" />
-            <StatCard title="Resume Score" value="92%" />
-            <StatCard title="Current Streak" value="12 Days" />
+           <StatCard
+  title="Interviews"
+  value={`${stats?.totalInterviews ?? 0}`}
+/>
+
+<StatCard
+  title="Average Score"
+  value={`${stats?.averageScore ?? 0}%`}
+/>
+
+<StatCard
+  title="Highest Score"
+  value={`${stats?.highestScore ?? 0}%`}
+/>
+
+<StatCard
+  title="Completed"
+  value={`${interviews.filter(i => i.overallScore !== null).length}`}
+/>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 mt-10">
             <div className="lg:col-span-2">
-              <ProgressChart />
+              <ProgressChart interviews={interviews} />
             </div>
 
             <QuickActions />
@@ -88,11 +102,11 @@ export default function Dashboard() {
 
           <div className="grid lg:grid-cols-3 gap-6 mt-8">
             <div className="lg:col-span-2 space-y-6">
-              <RecentInterviews />
-              <ActivityFeed />
+              <RecentInterviews interviews={interviews} />
+              <ActivityFeed interviews={interviews} />
             </div>
 
-            <AIRecommendations />
+            <AIRecommendations interviews={interviews} />
           </div>
         </div>
       </main>

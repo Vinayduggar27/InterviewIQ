@@ -1,28 +1,50 @@
-export default function ActivityFeed() {
+type Interview = {
+  id: string;
+  company: string;
+  role: string;
+  overallScore: number | null;
+  createdAt: string;
+};
+
+type Props = {
+  interviews: Interview[];
+};
+
+export default function ActivityFeed({ interviews }: Props) {
   return (
-    <div className="bg-slate-900 rounded-2xl p-6 mt-6">
-      <h2 className="text-2xl font-semibold mb-5">
+    <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
+      <h2 className="text-2xl font-semibold mb-6">
         Recent Activity
       </h2>
 
-      <div className="space-y-4">
+      {interviews.length === 0 ? (
+        <p className="text-slate-400">
+          No activity yet.
+        </p>
+      ) : (
+        interviews
+          .slice()
+          .reverse()
+          .slice(0, 5)
+          .map((item) => (
+            <div
+              key={item.id}
+              className="border-b border-slate-800 py-4"
+            >
+              <p>
+                Completed{" "}
+                <span className="text-cyan-400">
+                  {item.company}
+                </span>{" "}
+                Interview
+              </p>
 
-        <div className="flex justify-between">
-          <span>✅ Completed Google Interview</span>
-          <span className="text-slate-400">2 min ago</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span>📄 Resume analyzed</span>
-          <span className="text-slate-400">15 min ago</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span>🤖 AI Feedback generated</span>
-          <span className="text-slate-400">Today</span>
-        </div>
-
-      </div>
+              <p className="text-slate-400 text-sm">
+                Score: {item.overallScore ?? "-"}%
+              </p>
+            </div>
+          ))
+      )}
     </div>
   );
 }
