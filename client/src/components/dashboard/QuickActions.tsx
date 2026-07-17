@@ -1,33 +1,36 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
-import { Link } from "react-router-dom";
 
 export default function QuickActions() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
-      <h2 className="text-xl font-semibold mb-6">
+      <h2 className="text-2xl font-semibold mb-8">
         Quick Actions
       </h2>
 
-      <div className="space-y-4">
-
-        <Link to="/create-interview">
-          <Button className="w-full">
-            Start AI Interview
-          </Button>
-        </Link>
-
-        <Button className="w-full">
-          + Create Interview
+      <div className="flex flex-col gap-5">
+        <Button
+          className="w-full"
+          onClick={() => navigate("/create-interview")}
+        >
+          Start AI Interview
         </Button>
 
-        <Button className="w-full">
+        <Button
+          className="w-full"
+          onClick={() => alert("Resume Analyzer coming soon 🚀")}
+        >
           Analyze Resume
         </Button>
 
-        <Button className="w-full">
+        <Button
+          className="w-full"
+          onClick={() => navigate("/dashboard")}
+        >
           View Reports
         </Button>
-
       </div>
     </div>
   );

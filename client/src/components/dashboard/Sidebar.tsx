@@ -30,12 +30,18 @@ export default function Sidebar() {
         </Link>
 
         <Link
-          to="/interview"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-        >
-          <FiBriefcase />
-          AI Interview
-        </Link>
+  to="/create-interview"
+  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+>
+  <FiBriefcase />
+  AI Interview
+</Link>
+        <Link
+  to="/resume"
+  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+>
+  📄 Analyze Resume
+</Link>
 
         <Link
           to="/profile"

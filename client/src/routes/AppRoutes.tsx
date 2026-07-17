@@ -1,34 +1,71 @@
 import { Routes, Route } from "react-router-dom";
 
+// Landing
 import LandingPage from "../pages/landing/LandingPage";
+
+// Auth
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
-import Dashboard from "../pages/dashboard/Dashboard";
 import ForgotPassword from "../pages/auth/ForgotPassword";
+
+// Dashboard
+import Dashboard from "../pages/dashboard/Dashboard";
+
+// Interview
+import CreateInterview from "../pages/interview/CreateInterview";
 import Interview from "../pages/interview/Interview";
 import InterviewResult from "../pages/interview/InterviewResult";
-import CreateInterview from "../pages/interview/CreateInterview";
 import InterviewDetails from "../pages/interview/InterviewDetails";
+
+// Profile
+import Profile from "../pages/profile/Profile";
 
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Landing */}
       <Route path="/" element={<LandingPage />} />
+
+      {/* Authentication */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
 
+      {/* Dashboard */}
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/interview/:id" element={<Interview />} />
-      <Route path="/result" element={<InterviewResult />} />
+
+      {/* Interview Flow */}
       <Route
-  path="/interview/details/:id"
-  element={<InterviewDetails />}
-/>
+        path="/create-interview"
+        element={<CreateInterview />}
+      />
+
+      {/* Optional shortcut from sidebar */}
       <Route
-    path="/create-interview"
-    element={<CreateInterview />}
-/>
+        path="/interview"
+        element={<CreateInterview />}
+      />
+
+      <Route
+        path="/interview/:id"
+        element={<Interview />}
+      />
+
+      <Route
+        path="/result"
+        element={<InterviewResult />}
+      />
+
+      <Route
+        path="/interview/details/:id"
+        element={<InterviewDetails />}
+      />
+
+      {/* Profile */}
+      <Route
+        path="/profile"
+        element={<Profile />}
+      />
     </Routes>
   );
 }
