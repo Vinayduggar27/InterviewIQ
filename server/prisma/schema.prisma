@@ -22,6 +22,7 @@ model User {
   updatedAt    DateTime @updatedAt
 
   interviews Interview[]
+  resumeAnalyses ResumeAnalysis[]
   
 }
 model Interview {
@@ -51,3 +52,16 @@ answers             Json?
 completedAt         DateTime?
 }
 
+model ResumeAnalysis {
+  id               String   @id @default(cuid())
+  atsScore         Int
+  strengths        Json
+  weaknesses       Json
+  missingKeywords  Json
+  suggestions      Json
+
+  createdAt        DateTime @default(now())
+
+  userId           String
+  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

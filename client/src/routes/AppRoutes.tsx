@@ -16,6 +16,7 @@ import CreateInterview from "../pages/interview/CreateInterview";
 import Interview from "../pages/interview/Interview";
 import InterviewResult from "../pages/interview/InterviewResult";
 import InterviewDetails from "../pages/interview/InterviewDetails";
+import ResumeAnalyzer from "../pages/ResumeAnalyzer";
 
 
 
@@ -68,6 +69,8 @@ export default function AppRoutes() {
         path="/profile"
         element={<Profile />}
       />
+
+      <Route path="/resume" element={<ResumeAnalyzer />} />
       
 
     </Routes>
