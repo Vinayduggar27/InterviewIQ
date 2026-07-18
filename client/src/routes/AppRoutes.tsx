@@ -17,6 +17,8 @@ import Interview from "../pages/interview/Interview";
 import InterviewResult from "../pages/interview/InterviewResult";
 import InterviewDetails from "../pages/interview/InterviewDetails";
 
+
+
 // Profile
 import Profile from "../pages/profile/Profile";
 
@@ -66,6 +68,8 @@ export default function AppRoutes() {
         path="/profile"
         element={<Profile />}
       />
+      
+
     </Routes>
   );
 }

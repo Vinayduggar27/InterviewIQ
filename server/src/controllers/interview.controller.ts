@@ -24,13 +24,17 @@ export const createInterview = async (
     });
 
     return res.status(201).json(interview);
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+  console.error("========== CREATE INTERVIEW ERROR ==========");
+  console.error(error);
+  console.error(error.message);
+  console.error(error.meta);
+  console.error("===========================================");
 
-    return res.status(500).json({
-      message: "Failed to create interview",
-    });
-  }
+  return res.status(500).json({
+    message: error.message,
+  });
+}
 };
 export const getInterviews = async (
   req: AuthRequest,
@@ -172,11 +176,15 @@ await prisma.interview.update({
 
 return res.json(result);
 
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+  console.error("========== CREATE INTERVIEW ERROR ==========");
+  console.error(error);
+  console.error(error.message);
+  console.error(error.meta);
+  console.error("===========================================");
 
-    return res.status(500).json({
-      message: "Server Error",
-    });
-  }
+  return res.status(500).json({
+    message: error.message,
+  });
+}
 };

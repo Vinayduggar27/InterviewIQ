@@ -22,6 +22,7 @@ model User {
   updatedAt    DateTime @updatedAt
 
   interviews Interview[]
+  
 }
 model Interview {
   id          String   @id @default(cuid())
@@ -49,3 +50,4 @@ answers             Json?
 
 completedAt         DateTime?
 }
+

@@ -1,36 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import Button from "../ui/Button";
 
 export default function QuickActions() {
   const navigate = useNavigate();
 
   return (
     <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
-      <h2 className="text-2xl font-semibold mb-8">
+      <h2 className="text-2xl font-semibold mb-6">
         Quick Actions
       </h2>
 
-      <div className="flex flex-col gap-5">
-        <Button
-          className="w-full"
-          onClick={() => navigate("/create-interview")}
+      <div className="flex flex-col gap-4">
+        <button
+          onClick={() => navigate("/interview")}
+          className="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-semibold py-4 rounded-xl transition"
         >
           Start AI Interview
-        </Button>
+        </button>
 
-        <Button
-          className="w-full"
-          onClick={() => alert("Resume Analyzer coming soon 🚀")}
+        <button
+          onClick={() => navigate("/resume")}
+          className="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-semibold py-4 rounded-xl transition"
         >
           Analyze Resume
-        </Button>
+        </button>
 
-        <Button
-          className="w-full"
+        <button
           onClick={() => navigate("/dashboard")}
+          className="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-semibold py-4 rounded-xl transition"
         >
           View Reports
-        </Button>
+        </button>
       </div>
     </div>
   );
