@@ -5,6 +5,9 @@ import Strengths from "./Strengths";
 import Weaknesses from "./Weaknesses";
 import MissingKeywords from "./MissingKeywords";
 import Suggestions from "./Suggestions";
+import { FiUploadCloud } from "react-icons/fi";
+import { FaFilePdf } from "react-icons/fa";
+import Loading from "./Loading";
 
 interface ResumeAnalysis {
   id: string;
@@ -61,36 +64,121 @@ const ResumeUpload = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border p-8">
+    <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10">
 
-      <div className="flex flex-col items-center gap-5">
+      <div className="flex flex-col items-center gap-8">
 
-        <input
-          type="file"
-          accept=".pdf"
-          onChange={(e) => {
-            if (e.target.files?.length) {
-              setFile(e.target.files[0]);
-              setError("");
-            }
-          }}
-        />
+        <label
+  className="
+w-full
+max-w-2xl
+rounded-3xl
+border-2
+border-dashed
+border-blue-300
+bg-gradient-to-br
+from-white
+to-blue-50
+shadow-lg
+hover:shadow-2xl
+hover:border-blue-500
+transition-all
+duration-300
+cursor-pointer
+p-14
+"
+>
+  <input
+    type="file"
+    accept=".pdf"
+    className="hidden"
+    onChange={(e) => {
+      if (e.target.files?.length) {
+        setFile(e.target.files[0]);
+        setError("");
+      }
+    }}
+  />
 
-        {file && (
-          <p className="text-gray-600 text-sm">
-            Selected File:
-            <span className="font-semibold ml-1">
-              {file.name}
-            </span>
-          </p>
-        )}
+  <div className="flex flex-col items-center">
+    <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center">
+
+  <FiUploadCloud
+    size={48}
+    className="text-blue-600"
+  />
+
+</div>
+
+    <h3 className="text-2xl font-bold text-gray-800 mt-6">
+  Upload Your Resume
+</h3>
+
+<p className="text-gray-500 mt-3 text-center">
+  Drag & drop your PDF here or click to browse.
+</p>
+
+<p className="text-sm text-gray-400 mt-2">
+  PDF only • Maximum file size: 5 MB
+</p>
+  </div>
+</label>
+
+       {file && (
+  <div className="w-full max-w-xl bg-gray-100 rounded-xl p-4 flex items-center justify-between border">
+
+    <div className="flex items-center gap-3">
+
+      <FaFilePdf
+        className="text-red-600"
+        size={28}
+      />
+
+      <div>
+
+        <p className="font-semibold">
+          {file.name}
+        </p>
+
+        <p className="text-sm text-gray-500">
+          Ready for AI Analysis
+        </p>
+
+      </div>
+
+    </div>
+
+    <span className="text-green-600 text-xl font-bold">
+      ✓
+    </span>
+
+  </div>
+)}
 
         <button
           onClick={handleUpload}
           disabled={loading}
-          className="px-8 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition disabled:opacity-50"
+          className="
+w-full
+max-w-xl
+px-10
+py-4
+rounded-xl
+bg-gradient-to-r
+from-blue-600
+to-indigo-600
+text-white
+font-semibold
+text-lg
+hover:scale-105
+hover:shadow-xl
+transition-all
+duration-300
+disabled:opacity-50
+disabled:hover:scale-100
+"
         >
-          {loading ? "Analyzing Resume..." : "Analyze Resume"}
+          Analyze Resume
         </button>
 
         {error && (
@@ -98,9 +186,12 @@ const ResumeUpload = () => {
             {error}
           </div>
         )}
+
+        {loading && <Loading />}
+
       </div>
 
-      {analysis && (
+      {!loading && analysis && (
   <div className="mt-10 border-t pt-8">
 
     <ATSScore score={analysis.atsScore} />
