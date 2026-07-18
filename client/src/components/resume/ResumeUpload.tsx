@@ -8,6 +8,7 @@ import Suggestions from "./Suggestions";
 import { FiUploadCloud } from "react-icons/fi";
 import { FaFilePdf } from "react-icons/fa";
 import Loading from "./Loading";
+import { generateResumeReport } from "../../utils/resumeReport";
 
 interface ResumeAnalysis {
   id: string;
@@ -23,6 +24,7 @@ const ResumeUpload = () => {
   const [analysis, setAnalysis] = useState<ResumeAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [dragActive, setDragActive] = useState(false);
 
   const handleUpload = async () => {
     if (!file) {
@@ -63,30 +65,77 @@ const ResumeUpload = () => {
     }
   };
 
+  const handleDrag = (
+  e: React.DragEvent<HTMLLabelElement>
+) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (e.type === "dragenter" || e.type === "dragover") {
+    setDragActive(true);
+  }
+
+  if (e.type === "dragleave") {
+    setDragActive(false);
+  }
+};
+
+const handleDrop = (
+  e: React.DragEvent<HTMLLabelElement>
+) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  setDragActive(false);
+
+  const droppedFile = e.dataTransfer.files[0];
+
+  if (!droppedFile) return;
+
+  if (droppedFile.type !== "application/pdf") {
+    setError("Only PDF files are allowed.");
+    return;
+  }
+
+  setFile(droppedFile);
+  setError("");
+};
+const removeFile = () => {
+  setFile(null);
+  setAnalysis(null);
+};
+
   return (
     <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10">
 
       <div className="flex flex-col items-center gap-8">
 
         <label
-  className="
-w-full
-max-w-2xl
-rounded-3xl
-border-2
-border-dashed
-border-blue-300
-bg-gradient-to-br
-from-white
-to-blue-50
-shadow-lg
-hover:shadow-2xl
-hover:border-blue-500
-transition-all
-duration-300
-cursor-pointer
-p-14
-"
+  onDragEnter={handleDrag}
+  onDragLeave={handleDrag}
+  onDragOver={handleDrag}
+  onDrop={handleDrop}
+  className={`
+    w-full
+    max-w-2xl
+    rounded-3xl
+    border-2
+    border-dashed
+    bg-gradient-to-br
+    from-white
+    to-blue-50
+    shadow-lg
+    cursor-pointer
+    transition-all
+    duration-300
+    p-14
+
+    ${
+      dragActive
+        ? "border-blue-600 scale-[1.02] shadow-2xl"
+        : "border-blue-300 hover:border-blue-500 hover:shadow-xl"
+    }
+  `}
 >
   <input
     type="file"
@@ -115,7 +164,9 @@ p-14
 </h3>
 
 <p className="text-gray-500 mt-3 text-center">
-  Drag & drop your PDF here or click to browse.
+  {dragActive
+  ? "Drop your resume here..."
+  : "Drag & Drop your PDF here or click to browse."}
 </p>
 
 <p className="text-sm text-gray-400 mt-2">
@@ -125,32 +176,44 @@ p-14
 </label>
 
        {file && (
-  <div className="w-full max-w-xl bg-gray-100 rounded-xl p-4 flex items-center justify-between border">
+  <div className="w-full max-w-2xl bg-white rounded-2xl shadow-md border border-gray-200 p-5 flex justify-between items-center">
 
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-4">
 
-      <FaFilePdf
-        className="text-red-600"
-        size={28}
-      />
+      <div className="w-14 h-14 rounded-xl bg-red-100 flex items-center justify-center">
+        <FaFilePdf
+          className="text-red-600"
+          size={28}
+        />
+      </div>
 
       <div>
-
-        <p className="font-semibold">
+        <h4 className="font-semibold">
           {file.name}
-        </p>
+        </h4>
 
         <p className="text-sm text-gray-500">
-          Ready for AI Analysis
+          {(file.size / 1024).toFixed(1)} KB
         </p>
-
       </div>
 
     </div>
 
-    <span className="text-green-600 text-xl font-bold">
-      ✓
-    </span>
+    <div className="flex items-center gap-5">
+
+      <span className="text-green-600 font-semibold">
+        Ready
+      </span>
+
+      <button
+        type="button"
+        onClick={removeFile}
+        className="text-red-500 hover:text-red-700 text-xl"
+      >
+        ✕
+      </button>
+
+    </div>
 
   </div>
 )}
@@ -192,24 +255,44 @@ disabled:hover:scale-100
       </div>
 
       {!loading && analysis && (
-  <div className="mt-10 border-t pt-8">
+  <div className="mt-10">
 
-    <ATSScore score={analysis.atsScore} />
+    <div className="grid lg:grid-cols-3 gap-8">
 
-    <div className="grid md:grid-cols-2 gap-6 mt-8">
+      {/* ATS Score */}
+      <div>
+        <ATSScore score={analysis.atsScore} />
+      </div>
 
-      <Strengths strengths={analysis.strengths} />
+      {/* Strengths */}
+      <div className="lg:col-span-2">
+        <Strengths strengths={analysis.strengths} />
+      </div>
 
+      {/* Weaknesses */}
       <Weaknesses weaknesses={analysis.weaknesses} />
 
+      {/* Missing Keywords */}
       <MissingKeywords
-    keywords={analysis.missingKeywords}
-/>
+        keywords={analysis.missingKeywords}
+      />
 
-      <Suggestions
-    suggestions={analysis.suggestions}
-/>
+      {/* Suggestions */}
+      <div className="lg:col-span-3">
+        <Suggestions
+          suggestions={analysis.suggestions}
+        />
+        <div className="flex justify-end mt-8">
+  <button
+    onClick={() => generateResumeReport(analysis)}
+    className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all duration-300"
+  >
+    📄 Download Report
+  </button>
 </div>
+      </div>
+
+    </div>
 
   </div>
 )}

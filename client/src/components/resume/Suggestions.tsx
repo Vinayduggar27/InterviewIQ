@@ -4,8 +4,8 @@ interface SuggestionsProps {
 
 const Suggestions = ({ suggestions }: SuggestionsProps) => {
   return (
-    <div className="bg-blue-50 rounded-2xl shadow-md p-6 border border-blue-100">
-      <h2 className="text-xl font-bold text-blue-700 mb-5">
+    <div className="bg-white rounded-3xl border-t-4 border-blue-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6">
+      <h2 className="text-2xl font-bold text-blue-700 mb-6 flex items-center gap-2">
         💡 AI Suggestions
       </h2>
 
@@ -14,11 +14,11 @@ const Suggestions = ({ suggestions }: SuggestionsProps) => {
           No suggestions available.
         </p>
       ) : (
-        <ul className="space-y-3">
+        <ul className="space-y-4">
           {suggestions.map((item, index) => (
             <li
               key={index}
-              className="bg-white rounded-lg p-4 border shadow-sm"
+              className="bg-blue-50 border border-blue-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200"
             >
               {item}
             </li>

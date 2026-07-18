@@ -4,19 +4,19 @@ interface StrengthsProps {
 
 const Strengths = ({ strengths }: StrengthsProps) => {
   return (
-    <div className="bg-green-50 rounded-2xl shadow-md p-6 border border-green-100">
-      <h2 className="text-xl font-bold text-green-700 mb-5">
+    <div className="bg-white rounded-3xl border-t-4 border-green-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6">
+      <h2 className="text-2xl font-bold text-green-700 mb-6 flex items-center gap-2">
         ✅ Strengths
       </h2>
 
       {strengths.length === 0 ? (
         <p className="text-gray-500">No strengths found.</p>
       ) : (
-        <ul className="space-y-3">
+        <ul className="space-y-4">
           {strengths.map((item, index) => (
             <li
               key={index}
-              className="bg-white rounded-lg px-4 py-3 shadow-sm border"
+              className="bg-green-50 border border-green-100 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200"
             >
               {item}
             </li>

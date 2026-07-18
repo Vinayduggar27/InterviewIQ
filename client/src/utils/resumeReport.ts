@@ -1,0 +1,364 @@
+import jsPDF from "jspdf";
+
+interface ResumeAnalysis {
+  atsScore: number;
+  strengths: string[];
+  weaknesses: string[];
+  missingKeywords: string[];
+  suggestions: string[];
+}
+
+export const generateResumeReport = (
+  analysis: ResumeAnalysis
+) => {
+  const doc = new jsPDF();
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+
+  let y = 20;
+
+  const margin = 20;
+
+  const lineHeight = 8;
+
+  const addFooter = () => {
+    const page = doc.getCurrentPageInfo().pageNumber;
+
+    doc.setFontSize(10);
+    doc.setTextColor(120);
+
+    doc.text(
+      `Page ${page}`,
+      pageWidth - 30,
+      pageHeight - 10
+    );
+  };
+
+  const checkPage = () => {
+    if (y > pageHeight - 25) {
+      addFooter();
+
+      doc.addPage();
+
+      y = 20;
+    }
+  };
+
+  const section = (
+    title: string,
+    color: [number, number, number],
+    items: string[]
+  ) => {
+    checkPage();
+
+    doc.setFillColor(...color);
+
+    doc.roundedRect(
+      margin,
+      y - 5,
+      pageWidth - 40,
+      10,
+      2,
+      2,
+      "F"
+    );
+
+    doc.setTextColor(255);
+
+    doc.setFontSize(14);
+
+    doc.text(title, margin + 5, y + 2);
+
+    y += 15;
+
+    doc.setTextColor(40);
+
+    doc.setFontSize(11);
+
+    items.forEach((item) => {
+      const lines = doc.splitTextToSize(
+        "• " + item,
+        pageWidth - 45
+      );
+
+      lines.forEach((line: string) => {
+        checkPage();
+
+        doc.text(line, margin + 5, y);
+
+        y += lineHeight;
+      });
+
+      y += 2;
+    });
+
+    y += 5;
+  };
+
+  // ================= Header =================
+
+  doc.setFillColor(37, 99, 235);
+
+  doc.rect(0, 0, pageWidth, 30, "F");
+
+  doc.setTextColor(255);
+
+  doc.setFontSize(24);
+
+  doc.text("InterviewIQ", margin, 18);
+
+  doc.setFontSize(11);
+
+  doc.text(
+    "AI Resume Analysis Report",
+    margin,
+    25
+  );
+
+  y = 45;
+
+  // ================= Date =================
+
+  doc.setTextColor(80);
+
+  doc.setFontSize(11);
+
+  doc.text(
+    `Generated: ${new Date().toLocaleString()}`,
+    margin,
+    y
+  );
+
+  y += 12;
+
+ // ================= Executive Summary =================
+
+doc.setFillColor(245, 247, 250);
+
+doc.roundedRect(
+  margin,
+  y - 5,
+  pageWidth - 40,
+  58,
+  3,
+  3,
+  "F"
+);
+
+doc.setTextColor(37, 99, 235);
+
+doc.setFontSize(17);
+
+doc.text("Resume Summary", margin + 5, y + 5);
+
+y += 18;
+
+doc.setFontSize(13);
+
+doc.setTextColor(60);
+
+const getRating = () => {
+  if (analysis.atsScore >= 85) return "Excellent";
+  if (analysis.atsScore >= 70) return "Very Good";
+  if (analysis.atsScore >= 50) return "Average";
+  return "★★☆☆☆ Needs Improvement";
+};
+
+doc.text(
+  `Rating: ${getRating()}`,
+  margin + 5,
+  y
+);
+
+y += 10;
+
+// Score Badge
+const badgeWidth = 32;
+const badgeHeight = 12;
+
+doc.setFillColor(
+  analysis.atsScore >= 85
+    ? 34
+    : analysis.atsScore >= 70
+    ? 59
+    : analysis.atsScore >= 50
+    ? 245
+    : 239,
+  analysis.atsScore >= 85
+    ? 197
+    : analysis.atsScore >= 70
+    ? 130
+    : analysis.atsScore >= 50
+    ? 158
+    : 68,
+  analysis.atsScore >= 85
+    ? 94
+    : analysis.atsScore >= 70
+    ? 246
+    : analysis.atsScore >= 50
+    ? 11
+    : 68
+);
+
+doc.roundedRect(
+  pageWidth - 60,
+  y - 8,
+  badgeWidth,
+  badgeHeight,
+  3,
+  3,
+  "F"
+);
+
+doc.setTextColor(255);
+
+doc.setFontSize(12);
+
+doc.text(
+  `${analysis.atsScore}%`,
+  pageWidth - 50,
+  y
+);
+
+doc.setTextColor(60);
+
+doc.text(
+  `ATS Score: ${analysis.atsScore}%`,
+  margin + 5,
+  y
+);
+
+y += 8;
+
+// Background Bar
+doc.setFillColor(225, 225, 225);
+
+doc.roundedRect(
+  margin + 5,
+  y,
+  120,
+  6,
+  2,
+  2,
+  "F"
+);
+
+// Filled Bar
+const progressWidth = (analysis.atsScore / 100) * 120;
+
+doc.setFillColor(
+  analysis.atsScore >= 85
+    ? 34
+    : analysis.atsScore >= 70
+    ? 59
+    : analysis.atsScore >= 50
+    ? 245
+    : 239,
+  analysis.atsScore >= 85
+    ? 197
+    : analysis.atsScore >= 70
+    ? 130
+    : analysis.atsScore >= 50
+    ? 158
+    : 68,
+  analysis.atsScore >= 85
+    ? 94
+    : analysis.atsScore >= 70
+    ? 246
+    : analysis.atsScore >= 50
+    ? 11
+    : 68
+);
+
+doc.roundedRect(
+  margin + 5,
+  y,
+  progressWidth,
+  6,
+  2,
+  2,
+  "F"
+);
+
+y += 14;
+
+doc.text(
+  `Strengths: ${analysis.strengths.length}`,
+  margin + 5,
+  y
+);
+
+y += 8;
+
+doc.text(
+  `Weaknesses: ${analysis.weaknesses.length}`,
+  margin + 5,
+  y
+);
+
+y += 8;
+
+doc.text(
+  `Missing Keywords: ${analysis.missingKeywords.length}`,
+  margin + 5,
+  y
+);
+
+y += 8;
+
+doc.text(
+  `AI Suggestions: ${analysis.suggestions.length}`,
+  margin + 5,
+  y
+);
+
+y += 18;
+
+  section(
+    "Strengths",
+    [34, 197, 94],
+    analysis.strengths
+  );
+
+  section(
+    "Weaknesses",
+    [239, 68, 68],
+    analysis.weaknesses
+  );
+
+  section(
+    "Missing Keywords",
+    [245, 158, 11],
+    analysis.missingKeywords
+  );
+
+  section(
+    "AI Suggestions",
+    [37, 99, 235],
+    analysis.suggestions
+  );
+
+  doc.setDrawColor(220);
+
+doc.line(
+  margin,
+  pageHeight - 20,
+  pageWidth - margin,
+  pageHeight - 20
+);
+
+doc.setFontSize(10);
+
+doc.setTextColor(120);
+
+doc.text(
+  "Generated by InterviewIQ • AI Powered Resume Analysis",
+  margin,
+  pageHeight - 12
+);
+
+  addFooter();
+
+  doc.save("InterviewIQ_Resume_Report.pdf");
+};
