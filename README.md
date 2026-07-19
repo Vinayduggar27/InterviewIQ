@@ -2,17 +2,26 @@
 
 <div align="center">
 
-### AI-Powered Interview Preparation Platform
+# AI-Powered Interview Preparation Platform
 
-Analyze your resume, practice AI-generated interviews, evaluate performance, and improve your chances of landing your dream job.
+### Transform Your Resume. Practice Smarter. Ace Every Interview.
+
+InterviewIQ is a modern full-stack AI platform that helps students and professionals improve their resumes, prepare for technical interviews, and receive intelligent AI-powered feedback using Large Language Models (LLMs).
+
+<p>
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js)
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss)
 ![Groq AI](https://img.shields.io/badge/Groq_AI-FF6B00?style=for-the-badge)
+
+</p>
+
+⭐ AI Resume Analysis • ATS Score • Mock Interviews • Speech Recognition • PDF Reports • Performance Analytics
 
 </div>
 
@@ -20,101 +29,192 @@ Analyze your resume, practice AI-generated interviews, evaluate performance, and
 
 # 📖 Overview
 
-InterviewIQ is a full-stack AI-powered interview preparation platform built to help students and professionals improve their resumes, practice interviews, and receive personalized AI-driven feedback.
+InterviewIQ is a production-ready AI-powered interview preparation platform developed using modern web technologies.
 
-The platform combines modern web technologies with Large Language Models (LLMs) to deliver resume analysis, ATS scoring, interview question generation, answer evaluation, and professional PDF reports within a single application.
+The platform helps job seekers improve every stage of the hiring process by combining AI Resume Analysis, ATS Compatibility Checking, AI Mock Interviews, Performance Tracking, Interactive Dashboards, and Professional Resume Reports into one seamless application.
 
----
-
-# ✨ Key Features
-
-## 📄 AI Resume Analyzer
-
-- Upload resumes in PDF format
-- AI-powered resume analysis
-- ATS compatibility scoring
-- Strength & weakness detection
-- Missing keyword identification
-- Personalized improvement suggestions
-- Professional PDF report generation
+Instead of using multiple websites for resume checking, interview practice, and career guidance, InterviewIQ provides everything in one unified platform powered by Artificial Intelligence.
 
 ---
 
-## 🎤 AI Mock Interviews
+# 💡 Why InterviewIQ?
 
-- Generate role-specific interview questions
-- Technology stack selection
-- Company & experience-based customization
-- AI answer evaluation
-- Interview timer
-- Camera preview
-- Speech recognition support
+Preparing for interviews usually requires multiple tools:
+
+- Resume Analyzer
+- ATS Checker
+- Mock Interview Platform
+- AI Feedback System
+- Performance Tracker
+
+InterviewIQ combines all of these into one intelligent application, making interview preparation faster, smarter, and more personalized.
+
+---
+
+# ✨ Key Highlights
+
+- 🤖 AI Resume Analysis
+- 📊 ATS Score Generation
+- 🎤 AI Mock Interviews
+- 🧠 Groq AI Integration
+- 🎙️ Speech Recognition
+- 📄 Professional PDF Report Export
+- 🔐 JWT Authentication
+- 🗄️ PostgreSQL Database
+- ⚡ Prisma ORM
+- 📱 Responsive Dashboard
+- 🎨 Modern UI with Tailwind CSS
+- 📈 Interview Performance Analytics
+
+---
+
+# 🚀 Features
+
+## 🤖 AI Resume Analyzer
+
+InterviewIQ analyzes resumes using Artificial Intelligence and provides detailed insights for improvement.
+
+### Features
+
+- Upload Resume (PDF)
+- AI Resume Analysis
+- ATS Compatibility Score
+- Resume Strength Detection
+- Resume Weakness Detection
+- Missing Keyword Identification
+- Personalized Suggestions
+- Executive Resume Summary
+- Animated ATS Score Visualization
+- Professional Report Generation
+
+---
+
+## 📄 Professional PDF Report
+
+Generate a beautifully designed downloadable report containing:
+
+- ATS Score
+- Resume Rating
+- Resume Summary
+- Strengths
+- Weaknesses
+- Missing Keywords
+- AI Suggestions
+- Executive Summary
+- Progress Visualization
+- InterviewIQ Branding
+- Automatic Page Breaks
+- Footer & Page Numbers
+
+---
+
+## 🎯 AI Mock Interview
+
+Users can create customized interviews by selecting:
+
+- Job Role
+- Experience Level
+- Company
+- Technology Stack
+
+InterviewIQ uses Groq AI to generate intelligent interview questions tailored to the selected role.
+
+---
+
+## 🎤 Interview Features
+
+- AI Generated Questions
+- Live Speech Recognition
+- Camera Preview
+- Answer Recording
+- Interview Timer
+- AI Answer Evaluation
+- Performance Feedback
+- Interview Analytics
 
 ---
 
 ## 📊 Dashboard
 
-- Resume analytics
-- Interview history
-- Performance statistics
-- AI recommendations
-- Recent activity
-- Quick actions
+The Dashboard provides an overview of interview preparation progress.
+
+### Includes
+
+- Total Interviews
+- Average Performance Score
+- Resume Analysis Summary
+- Recent Activity
+- AI Recommendations
+- Quick Actions
+- Progress Analytics
 
 ---
 
 # 🏗️ System Architecture
 
-```
-                 React + TypeScript
-                        │
-                        │ REST API
-                        ▼
-              Express + TypeScript
-                        │
-      ┌─────────────────┴────────────────┐
-      │                                  │
-      ▼                                  ▼
- PostgreSQL + Prisma                Groq AI API
-      │                                  │
-      └──────────────┬───────────────────┘
-                     ▼
-              Resume Analysis
-           Interview Generation
-           Answer Evaluation
+```text
+                    ┌────────────────────┐
+                    │     React + Vite    │
+                    │   TypeScript Client │
+                    └──────────┬──────────┘
+                               │
+                         REST API Calls
+                               │
+                               ▼
+                    ┌────────────────────┐
+                    │ Express + Node.js  │
+                    │    Backend API     │
+                    └───────┬─────┬──────┘
+                            │     │
+                Prisma ORM  │     │  Groq AI API
+                            │     │
+                            ▼     ▼
+                  PostgreSQL     AI Models
+                       │
+                       ▼
+                 Application Data
 ```
 
 ---
 
-# ⚙️ Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
+## Frontend
 
 - React
 - TypeScript
 - Tailwind CSS
 - Vite
 - Axios
-- React Router
+- React Router DOM
 
-### Backend
+---
+
+## Backend
 
 - Node.js
 - Express.js
 - TypeScript
 - JWT Authentication
+- REST APIs
 
-### Database
+---
+
+## Database
 
 - PostgreSQL
 - Prisma ORM
 
-### Artificial Intelligence
+---
+
+## Artificial Intelligence
 
 - Groq AI
 - Llama 3.3 70B Versatile
 
-### Utilities
+---
+
+## Utilities
 
 - pdf-parse
 - jsPDF
@@ -123,104 +223,33 @@ The platform combines modern web technologies with Large Language Models (LLMs) 
 
 # 📂 Project Structure
 
-```
-InterviewIQ/
-
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── hooks/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── assets/
+```text
+InterviewIQ
+│
+├── client
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── utils
+│   │   └── types
 │   │
+│   ├── public
 │   └── package.json
 │
-├── server/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── prisma/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
+├── server
+│   ├── controllers
+│   ├── middleware
+│   ├── prisma
+│   ├── routes
+│   ├── services
+│   ├── utils
+│   ├── app.ts
 │   └── package.json
 │
 └── README.md
-```
-
----
-
-# 🔐 Authentication
-
-InterviewIQ uses **JWT-based authentication** to secure user accounts and protected resources.
-
-### Features
-
-- User Registration
-- Secure Login
-- Password Hashing
-- JWT Token Generation
-- Protected Routes
-- Authorization Middleware
-
----
-
-# 📄 Resume Analysis Workflow
-
-```
-Upload Resume
-      │
-      ▼
-Extract PDF Text
-      │
-      ▼
-Send to Groq AI
-      │
-      ▼
-Generate
-
-• ATS Score
-• Strengths
-• Weaknesses
-• Missing Keywords
-• Suggestions
-
-      │
-      ▼
-Display Interactive Dashboard
-      │
-      ▼
-Download PDF Report
-```
-
----
-
-# 🎤 Interview Workflow
-
-```
-Create Interview
-        │
-        ▼
-Choose
-
-• Job Role
-• Company
-• Experience
-• Tech Stack
-
-        │
-        ▼
-Generate AI Questions
-        │
-        ▼
-User Answers
-        │
-        ▼
-AI Evaluation
-        │
-        ▼
-Performance Dashboard
 ```
 
 ---
@@ -230,46 +259,221 @@ Performance Dashboard
 | Method | Endpoint | Description |
 |---------|----------|-------------|
 | POST | `/api/auth/register` | Register a new user |
-| POST | `/api/auth/login` | User authentication |
-| GET | `/api/interviews` | Fetch all interviews |
-| POST | `/api/interviews` | Create AI interview |
+| POST | `/api/auth/login` | Authenticate user |
+| GET | `/api/interviews` | Get all interviews |
+| POST | `/api/interviews` | Create a new AI interview |
 | GET | `/api/interviews/:id` | Fetch interview details |
 | POST | `/api/resume/analyze` | Analyze uploaded resume |
 
-> Additional endpoints can be documented in a dedicated `docs/API.md` as the project grows.
+> Authentication is handled using JWT Bearer Tokens for protected routes.
 
 ---
 
-# 📊 Resume Report
+# 🔐 Authentication
 
-Each generated report contains:
+InterviewIQ uses secure JWT Authentication.
+
+### Features
+
+- User Registration
+- User Login
+- Password Encryption
+- JWT Token Generation
+- Protected Routes
+- Authorization Middleware
+- Secure API Access
+
+---
+
+# 📄 Resume Analysis Workflow
+
+```text
+Upload Resume
+      │
+      ▼
+PDF Parsing
+      │
+      ▼
+Extract Resume Text
+      │
+      ▼
+Send Data to Groq AI
+      │
+      ▼
+Generate
+
+• ATS Score
+• Resume Summary
+• Strengths
+• Weaknesses
+• Missing Keywords
+• AI Suggestions
+
+      │
+      ▼
+Interactive Dashboard
+      │
+      ▼
+Generate Professional PDF Report
+```
+
+---
+
+# 🎤 AI Interview Workflow
+
+```text
+Create Interview
+       │
+       ▼
+
+Select
+
+• Role
+• Company
+• Experience
+• Tech Stack
+
+       │
+       ▼
+
+Generate AI Questions
+
+       │
+       ▼
+
+Candidate Answers
+
+       │
+       ▼
+
+AI Evaluation
+
+       │
+       ▼
+
+Performance Dashboard
+```
+
+---
+
+# 📈 ATS Score Evaluation
+
+InterviewIQ evaluates resumes using multiple factors including:
+
+- Resume Structure
+- Technical Skills
+- Keywords
+- Education
+- Experience
+- Projects
+- Certifications
+- ATS Compatibility
+- Formatting Quality
+
+---
+# 🎨 User Interface Highlights
+
+InterviewIQ is designed with a modern, responsive, and user-friendly interface to deliver a smooth interview preparation experience across devices.
+
+### UI Features
+
+- 🎨 Modern Gradient Design
+- 📱 Fully Responsive Layout
+- 🖱️ Drag & Drop Resume Upload
+- ⚡ Animated Loading Screens
+- 📊 Interactive Dashboard
+- 📈 Circular ATS Progress Indicator
+- 🎯 Professional Cards
+- 🌙 Clean & Minimal Interface
+- 🚀 Smooth Animations
+- 💻 Mobile & Desktop Friendly
+
+---
+
+# 📄 Professional PDF Report
+
+After analyzing the resume, InterviewIQ generates a professional AI-powered PDF report.
+
+### Report Includes
 
 - Executive Summary
-- ATS Score
 - Resume Rating
-- Strength Analysis
-- Weakness Analysis
+- ATS Compatibility Score
+- Resume Strengths
+- Resume Weaknesses
 - Missing Keywords
-- AI Suggestions
+- AI Recommendations
 - Progress Visualization
+- Automatic Pagination
+- Footer with Page Numbers
 - InterviewIQ Branding
 
 ---
 
-# 🎨 UI Highlights
+# 🧠 AI Features
 
-- Responsive Design
-- Modern Dashboard
-- Drag & Drop Resume Upload
-- Animated Loading Screen
-- Circular ATS Progress Indicator
-- Professional Cards
-- Smooth Animations
-- Premium PDF Export
+InterviewIQ leverages Large Language Models (LLMs) through **Groq AI** to provide intelligent interview preparation.
+
+### AI Capabilities
+
+- Resume Understanding
+- ATS Analysis
+- Resume Scoring
+- Missing Keyword Detection
+- Personalized Suggestions
+- Interview Question Generation
+- AI Answer Evaluation
+- Performance Feedback
 
 ---
 
-# 🚀 Getting Started
+# 📊 Dashboard Overview
+
+The Dashboard acts as the central hub for monitoring interview preparation progress.
+
+### Dashboard Modules
+
+- Resume Analysis
+- ATS Score
+- Interview Statistics
+- AI Recommendations
+- Recent Activities
+- Quick Actions
+- Performance Overview
+- Progress Tracking
+
+---
+
+# 🔄 Application Flow
+
+```text
+                User Login
+                     │
+                     ▼
+               Dashboard
+                     │
+      ┌──────────────┴──────────────┐
+      │                             │
+      ▼                             ▼
+Resume Analyzer               AI Interview
+      │                             │
+      ▼                             ▼
+Upload Resume               Create Interview
+      │                             │
+      ▼                             ▼
+Groq AI Analysis        AI Question Generation
+      │                             │
+      ▼                             ▼
+Resume Report            AI Evaluation
+      │                             │
+      └──────────────┬──────────────┘
+                     ▼
+              Performance Dashboard
+```
+
+---
+
+# ⚙️ Installation
 
 ## Clone the Repository
 
@@ -277,18 +481,24 @@ Each generated report contains:
 git clone https://github.com/Vinayduggar27/InterviewIQ.git
 ```
 
+Navigate to the project directory.
+
+```bash
+cd InterviewIQ
+```
+
 ---
 
-## Install Dependencies
+# 📦 Install Dependencies
 
-### Frontend
+## Frontend
 
 ```bash
 cd client
 npm install
 ```
 
-### Backend
+## Backend
 
 ```bash
 cd ../server
@@ -297,112 +507,174 @@ npm install
 
 ---
 
-## Environment Variables
+# 🔑 Environment Variables
 
 Create a `.env` file inside the **server** directory.
 
 ```env
 PORT=5000
 
-DATABASE_URL=your_postgresql_connection_string
+DATABASE_URL=your_postgresql_database_url
 
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_jwt_secret
 
 GROQ_API_KEY=your_groq_api_key
 ```
 
 ---
 
-## Run the Application
+# ▶️ Running the Application
 
-### Backend
+## Start Backend
 
 ```bash
 cd server
+
 npm run dev
 ```
 
-### Frontend
+---
+
+## Start Frontend
 
 ```bash
 cd client
+
 npm run dev
 ```
 
-The application will be available at:
+---
 
-```
-Frontend → http://localhost:5173
+The application will run on:
 
-Backend → http://localhost:5000
+```text
+Frontend : http://localhost:5173
+
+Backend  : http://localhost:5000
 ```
 
 ---
 
 # 📸 Screenshots
 
-Add screenshots of:
+Add screenshots of the following pages for a professional GitHub repository.
 
-- Landing Page
-- Dashboard
-- Resume Analyzer
-- AI Interview
-- PDF Report
+| Feature | Screenshot |
+|----------|------------|
+| Landing Page | Coming Soon |
+| Login Page | Coming Soon |
+| Dashboard | Coming Soon |
+| Resume Analyzer | Coming Soon |
+| AI Interview | Coming Soon |
+| PDF Report | Coming Soon |
 
 ---
 
 # 🚀 Future Enhancements
 
-- Coding Interview Mode
-- Company-specific Interview Sets
-- AI Career Roadmap
-- Resume Version History
-- Dark Mode
-- Analytics Dashboard
-- Interview Recording
+Some planned improvements include:
+
+- 💻 AI Coding Interview Mode
+- 🎯 Company Specific Interview Sets
+- 🎤 Voice-Based Interviews
+- 📹 Interview Recording
+- 📈 Advanced Performance Analytics
+- 🌙 Dark Mode
+- 🌍 Multi-language Support
+- 📚 Resume Version History
+- ☁️ Cloud Deployment
+- 📊 Admin Dashboard
+- 📅 Interview Scheduling
+- 📱 Progressive Web App (PWA)
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome!
+Contributions are always welcome!
+
+### Steps
+
+1. Fork the repository
+
+2. Create a feature branch
 
 ```bash
-# Fork the repository
-
-# Create a feature branch
-
-git checkout -b feature/new-feature
-
-# Commit changes
-
-git commit -m "feat: add new feature"
-
-# Push changes
-
-git push origin feature/new-feature
+git checkout -b feature/your-feature
 ```
 
-Then create a Pull Request.
+3. Commit your changes
+
+```bash
+git commit -m "feat: add your feature"
+```
+
+4. Push the branch
+
+```bash
+git push origin feature/your-feature
+```
+
+5. Open a Pull Request 🚀
+
+---
+
+# 📝 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project under the terms of the MIT License.
 
 ---
 
 # 👨‍💻 Author
 
-**Vinay Duggar**
+## Vinay Duggar
 
-B.Tech Computer Science Engineering  
-BML Munjal University
+**B.Tech Computer Science Engineering**  
+**BML Munjal University**
 
-- GitHub: https://github.com/Vinayduggar27
-- LinkedIn: https://www.linkedin.com/in/vinay-duggar/
+### Connect with Me
+
+- 💼 LinkedIn: https://www.linkedin.com/in/vinay-duggar/
+- 💻 GitHub: https://github.com/Vinayduggar27
+- 📧 Email: vinayduggar27@gmail.com
+
+---
+
+# ⭐ Support
+
+If you found this project useful, please consider giving it a **Star ⭐** on GitHub.
+
+Your support motivates future improvements and helps others discover the project.
+
+---
+
+# 🙏 Acknowledgements
+
+Special thanks to the open-source community and the amazing technologies that made this project possible.
+
+- React
+- TypeScript
+- Node.js
+- Express.js
+- PostgreSQL
+- Prisma ORM
+- Tailwind CSS
+- Groq AI
+- jsPDF
+- pdf-parse
 
 ---
 
 <div align="center">
 
-### ⭐ If you found this project useful, consider giving it a star on GitHub!
+# ⭐ Thank You for Visiting!
 
-Built with ❤️ using React, TypeScript, Express, PostgreSQL, Prisma, and Groq AI.
+### If you like this project, don't forget to ⭐ star the repository.
+
+Made with ❤️ by **Vinay Duggar**
+
+**InterviewIQ — Empowering Careers with Artificial Intelligence**
 
 </div>
