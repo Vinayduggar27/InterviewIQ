@@ -560,21 +560,39 @@ Backend  : http://localhost:5000
 ## 🏠 Landing Page
 
 <p align="center">
-  <img src="screenshots/landing.png" width="90%">
+  <img src="screenshots/landing.png" alt="Landing Page" width="900"/>
 </p>
 
-## 📊 Dashboard & Resume Analyzer
+---
+
+## 📊 Dashboard
 
 <p align="center">
-  <img src="screenshots/dashboard.png" width="48%">
-  <img src="screenshots/resume-analyzer.png" width="48%">
+  <img src="screenshots/dashboard.png" alt="Dashboard" width="900"/>
 </p>
 
-## 🎤 AI Interview & PDF Report
+---
+
+## 🤖 Resume Analyzer
 
 <p align="center">
-  <img src="screenshots/interview.png" width="48%">
-  <img src="screenshots/pdf-report.png" width="48%">
+  <img src="screenshots/resume-analyzer.png" alt="Resume Analyzer" width="900"/>
+</p>
+
+---
+
+## 🎤 AI Mock Interview
+
+<p align="center">
+  <img src="screenshots/interview.png" alt="AI Interview" width="900"/>
+</p>
+
+---
+
+## 📄 PDF Report
+
+<p align="center">
+  <img src="screenshots/pdf-report.png" alt="PDF Report" width="900"/>
 </p>
 
 ---
