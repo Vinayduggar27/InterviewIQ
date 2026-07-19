@@ -560,39 +560,24 @@ Backend  : http://localhost:5000
 ## 🏠 Landing Page
 
 <p align="center">
-  <img src="screenshots/landing.png" alt="Landing Page" width="900"/>
+  <img src="screenshots/landing.png" width="90%">
+  <img src="screenshots/login.png" width="90%">
 </p>
 
----
-
-## 📊 Dashboard
+## 📊 Dashboard & Resume Analyzer
 
 <p align="center">
-  <img src="screenshots/dashboard.png" alt="Dashboard" width="900"/>
+  <img src="screenshots/dashboard.png" width="48%">
+  <img src="screenshots/resumeanalyzer.png" width="48%">
+  <img src="screenshots/resume_analyzer.png" width="48%">
 </p>
 
----
-
-## 🤖 Resume Analyzer
+## 🎤 AI Interview & PDF Report
 
 <p align="center">
-  <img src="screenshots/resume-analyzer.png" alt="Resume Analyzer" width="900"/>
-</p>
-
----
-
-## 🎤 AI Mock Interview
-
-<p align="center">
-  <img src="screenshots/interview.png" alt="AI Interview" width="900"/>
-</p>
-
----
-
-## 📄 PDF Report
-
-<p align="center">
-  <img src="screenshots/pdf-report.png" alt="PDF Report" width="900"/>
+  <img src="screenshots/interview.png" width="48%">
+   <img src="screenshots/interview_1.png" width="48%">
+  <img src="screenshots/InterviewIQ_report.png" width="48%">
 </p>
 
 ---
@@ -605,14 +590,10 @@ Some planned improvements include:
 - 🎯 Company Specific Interview Sets
 - 🎤 Voice-Based Interviews
 - 📹 Interview Recording
-- 📈 Advanced Performance Analytics
 - 🌙 Dark Mode
-- 🌍 Multi-language Support
 - 📚 Resume Version History
-- ☁️ Cloud Deployment
 - 📊 Admin Dashboard
-- 📅 Interview Scheduling
-- 📱 Progressive Web App (PWA)
+
 
 ---
 
