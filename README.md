@@ -557,16 +557,25 @@ Backend  : http://localhost:5000
 
 # 📸 Screenshots
 
-Add screenshots of the following pages for a professional GitHub repository.
+## 🏠 Landing Page
 
-| Feature | Screenshot |
-|----------|------------|
-| Landing Page | Coming Soon |
-| Login Page | Coming Soon |
-| Dashboard | Coming Soon |
-| Resume Analyzer | Coming Soon |
-| AI Interview | Coming Soon |
-| PDF Report | Coming Soon |
+<p align="center">
+  <img src="screenshots/landing.png" width="90%">
+</p>
+
+## 📊 Dashboard & Resume Analyzer
+
+<p align="center">
+  <img src="screenshots/dashboard.png" width="48%">
+  <img src="screenshots/resume-analyzer.png" width="48%">
+</p>
+
+## 🎤 AI Interview & PDF Report
+
+<p align="center">
+  <img src="screenshots/interview.png" width="48%">
+  <img src="screenshots/pdf-report.png" width="48%">
+</p>
 
 ---
 
