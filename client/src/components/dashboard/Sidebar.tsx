@@ -3,63 +3,82 @@ import {
   FiUser,
   FiSettings,
   FiBriefcase,
+  FiFileText,
 } from "react-icons/fi";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const menuItems = [
+  {
+    name: "Dashboard",
+    path: "/dashboard",
+    icon: FiHome,
+  },
+  {
+    name: "AI Interview",
+    path: "/create-interview",
+    icon: FiBriefcase,
+  },
+  {
+    name: "Analyze Resume",
+    path: "/resume",
+    icon: FiFileText,
+  },
+  {
+    name: "Profile",
+    path: "/profile",
+    icon: FiUser,
+  },
+  {
+    name: "Settings",
+    path: "/settings",
+    icon: FiSettings,
+  },
+];
 
 export default function Sidebar() {
   return (
-    <aside className="w-72 bg-slate-900 border-r border-slate-800 flex flex-col">
+    <aside className="w-72 min-h-screen bg-slate-900 border-r border-slate-800 flex flex-col">
 
+      {/* Logo */}
       <div className="p-8 border-b border-slate-800">
-
-        <h1 className="text-3xl font-bold text-cyan-400">
+        <h1 className="text-3xl font-extrabold text-cyan-400 tracking-wide">
           InterviewIQ
         </h1>
-
       </div>
 
+      {/* Navigation */}
       <nav className="flex-1 p-6 space-y-3">
 
-        <Link
-          to="/dashboard"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-        >
-          <FiHome />
-          Dashboard
-        </Link>
+        {menuItems.map((item) => {
+          const Icon = item.icon;
 
-        <Link
-  to="/create-interview"
-  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
->
-  <FiBriefcase />
-  AI Interview
-</Link>
-        <Link
-  to="/resume"
-  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
->
-  📄 Analyze Resume
-</Link>
-
-        <Link
-          to="/profile"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-        >
-          <FiUser />
-          Profile
-        </Link>
-
-        <Link
-          to="/settings"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-        >
-          <FiSettings />
-          Settings
-        </Link>
+          return (
+            <NavLink
+              key={item.name}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
+                  isActive
+                    ? "bg-cyan-500 text-white shadow-lg"
+                    : "text-slate-300 hover:bg-slate-800 hover:text-cyan-400"
+                }`
+              }
+            >
+              <Icon size={20} />
+              <span>{item.name}</span>
+            </NavLink>
+          );
+        })}
 
       </nav>
+
+      {/* Footer */}
+      <div className="p-6 border-t border-slate-800 text-center">
+        <p className="text-xs text-slate-500">
+          InterviewIQ v1.0
+        </p>
+      </div>
 
     </aside>
   );
