@@ -8,66 +8,50 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(cuid())
-  name         String
-  email        String   @unique
-  password     String
-
-  role         String?
-  experience   String?
-  skills       String?
-  avatar       String?
-
-  university   String?
-  course        String?
-  github        String?
-  linkedin      String?
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  interviews      Interview[]
-  resumeAnalyses  ResumeAnalysis[]
+  id             String           @id @default(cuid())
+  name           String
+  email          String           @unique
+  password       String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  avatar         String?
+  experience     String?
+  role           String?
+  skills         String?
+  interviews     Interview[]
+  resumeAnalyses ResumeAnalysis[]
 }
-  
 
 model Interview {
-  id          String   @id @default(cuid())
-  role        String
-  company     String
-  experience  Int
-  techStack   String
-  questions   Json?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  userId      String
-  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  overallScore        Int?
-technicalScore      Int?
-communicationScore  Int?
-confidenceScore     Int?
-
-feedback            String?
-
-strengths           Json?
-weaknesses          Json?
-
-answers             Json?
-
-completedAt         DateTime?
+  id                 String    @id @default(cuid())
+  role               String
+  company            String
+  experience         Int
+  techStack          String
+  questions          Json?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  userId             String
+  answers            Json?
+  communicationScore Int?
+  completedAt        DateTime?
+  confidenceScore    Int?
+  feedback           String?
+  overallScore       Int?
+  strengths          Json?
+  technicalScore     Int?
+  weaknesses         Json?
+  user               User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model ResumeAnalysis {
-  id               String   @id @default(cuid())
-  atsScore         Int
-  strengths        Json
-  weaknesses       Json
-  missingKeywords  Json
-  suggestions      Json
-
-  createdAt        DateTime @default(now())
-
-  userId           String
-  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id              String   @id @default(cuid())
+  userId          String
+  atsScore        Int
+  strengths       Json
+  weaknesses      Json
+  missingKeywords Json
+  suggestions     Json
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

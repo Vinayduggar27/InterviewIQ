@@ -7,6 +7,7 @@ import dashboardRoutes from "./routes/dashboard.routes";
 import interviewRoutes from "./routes/interview.routes";
 import resumeRoutes from "./routes/resume.routes";
 import profileRoutes from "./routes/profile.routes";
+import settingsRoutes from "./routes/settings.routes";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/interviews", interviewRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/settings", settingsRoutes);
 
 app.get("/", (req, res) => {
   res.send("InterviewIQ API is running 🚀");
