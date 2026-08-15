@@ -1,1 +1,240 @@
 @import "tailwindcss";
+
+/* =========================================
+   InterviewIQ - Exact Reference Theme
+   ========================================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #12181f;
+  color: #ffffff;
+}
+
+/* =========================================
+   BACKGROUNDS
+   ========================================= */
+
+.bg-slate-950 {
+  background-color: #12181f !important;
+}
+
+.bg-slate-900 {
+  background-color: #151b22 !important;
+}
+
+.bg-slate-800 {
+  background-color: #181e25 !important;
+}
+
+.bg-slate-700 {
+  background-color: #1f2933 !important;
+}
+
+/* =========================================
+   SIDEBAR / LAYOUT
+   ========================================= */
+
+.bg-slate-950\/95 {
+  background-color: #10151c !important;
+}
+
+/* =========================================
+   BORDERS
+   ========================================= */
+
+.border-slate-800 {
+  border-color: #2f3d4b !important;
+}
+
+.border-slate-700 {
+  border-color: #3a4a59 !important;
+}
+
+/* =========================================
+   PRIMARY BLUE
+   ========================================= */
+
+.bg-cyan-500 {
+  background-color: #4f7cac !important;
+}
+
+.bg-cyan-600 {
+  background-color: #3f6790 !important;
+}
+
+.bg-cyan-400 {
+  background-color: #6b8fb8 !important;
+}
+
+/* =========================================
+   BLUE TEXT
+   ========================================= */
+
+.text-cyan-400 {
+  color: #6b8fb8 !important;
+}
+
+.text-cyan-500 {
+  color: #4f7cac !important;
+}
+
+.text-cyan-300 {
+  color: #8ba8c7 !important;
+}
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.hover\:bg-cyan-600:hover {
+  background-color: #3f6790 !important;
+}
+
+.hover\:bg-cyan-500:hover {
+  background-color: #4f7cac !important;
+}
+
+.hover\:border-cyan-500:hover {
+  border-color: #4f7cac !important;
+}
+
+.hover\:text-cyan-400:hover {
+  color: #8ba8c7 !important;
+}
+
+/* =========================================
+   SECONDARY TEXT
+   ========================================= */
+
+.text-slate-400 {
+  color: #9aa3ad !important;
+}
+
+.text-slate-300 {
+  color: #c5ccd4 !important;
+}
+
+.text-slate-200 {
+  color: #dce1e6 !important;
+}
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+input,
+textarea,
+select {
+  background-color: #181e25;
+  border-color: #2f3d4b;
+}
+
+/* =========================================
+   FOCUS
+   ========================================= */
+
+.focus\:ring-cyan-500:focus {
+  --tw-ring-color: #4f7cac !important;
+}
+
+.focus\:border-cyan-500:focus {
+  border-color: #4f7cac !important;
+}
+
+/* =========================================
+   CHART
+   ========================================= */
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #2f3d4b !important;
+}
+
+.recharts-text {
+  fill: #9aa3ad !important;
+}
+
+.recharts-line-curve {
+  stroke: #4f7cac !important;
+}
+
+.recharts-line-dot {
+  fill: #6b8fb8 !important;
+  stroke: #4f7cac !important;
+}
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+  background: #4f7cac;
+  color: #ffffff;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #12181f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2f3d4b;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f7cac;
+}
+
+/* =========================================
+   FIX HARD-CODED OLD THEME COLORS
+   ========================================= */
+
+/* Old black background */
+[class*="bg-[#12181F]"] {
+  background-color: #12181f !important;
+}
+
+/* Old card background */
+[class*="bg-[#151B22]"] {
+  background-color: #151b22 !important;
+}
+
+/* Other common old dark backgrounds */
+[class*="bg-[#0f1112]"],
+[class*="bg-[#101214]"],
+[class*="bg-[#111214]"] {
+  background-color: #12181f !important;
+}
+
+/* Old borders */
+[class*="border-[#2F3D4B]"],
+[class*="border-[#2F3D4B]"] {
+  border-color: #2f3d4b !important;
+}
+
+/* Old blue colors */
+[class*="bg-[#4f7cac]"] {
+  background-color: #4f7cac !important;
+}
+
+[class*="text-[#4f7cac]"] {
+  color: #4f7cac !important;
+}
+
+[class*="text-[#6b8fb8]"] {
+  color: #6b8fb8 !important;
+}

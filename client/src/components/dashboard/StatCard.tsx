@@ -5,20 +5,24 @@ interface Props {
   value: string;
 }
 
-export default function StatCard({
-  title,
-  value,
-}: Props) {
+export default function StatCard({ title, value }: Props) {
   return (
     <motion.div
-      whileHover={{ y: -6 }}
-      className="rounded-2xl bg-slate-900 border border-slate-800 p-6 shadow-xl"
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2 }}
+      className="
+        rounded-xl
+        bg-[#151B22]
+        border border-[#2F3D4B]
+        px-6 py-5
+        min-h-[120px]
+      "
     >
-      <p className="text-slate-400">
+      <p className="text-[#9AA3AD] text-sm font-medium">
         {title}
       </p>
 
-      <h2 className="text-4xl font-bold mt-4 text-cyan-400">
+      <h2 className="text-4xl font-bold mt-5 text-white">
         {value}
       </h2>
     </motion.div>

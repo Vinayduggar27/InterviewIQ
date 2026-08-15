@@ -10,24 +10,22 @@ export default function QuestionCard({
   total,
 }: QuestionCardProps) {
   return (
-    <div className="bg-slate-900 rounded-xl p-6 border border-slate-800">
-
-      <div className="flex justify-between items-center mb-4">
-
-        <p className="text-cyan-400 font-semibold">
+    <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+      {/* Header */}
+      <div className="mb-5 flex items-center justify-between">
+        <p className="font-semibold text-[#6B8FB8]">
           AI Interviewer
         </p>
 
-        <span className="text-slate-400">
+        <span className="rounded-full border border-[#2F3D4B] bg-[#12181F] px-3 py-1 text-sm text-[#9AA3AD]">
           Question {current} / {total}
         </span>
-
       </div>
 
-      <h2 className="text-2xl font-bold leading-relaxed">
+      {/* Question */}
+      <h2 className="text-2xl font-bold leading-relaxed text-white">
         {question}
       </h2>
-
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default function PasswordInput({
       <button
         type="button"
         onClick={() => setShow(!show)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-cyan-400"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9AA3AD] hover:text-[#6B8FB8]"
       >
         {show ? <FiEyeOff /> : <FiEye />}
       </button>

@@ -39,29 +39,29 @@ export default function CreateInterview() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[#12181F] flex items-center justify-center p-6">
 
-      <div className="bg-slate-900 w-full max-w-xl rounded-3xl p-8 border border-slate-800">
+      <div className="bg-[#151B22] w-full max-w-xl rounded-3xl p-8 border border-[#2F3D4B]">
 
         <h1 className="text-3xl font-bold text-white mb-2">
           Start AI Interview
         </h1>
 
-        <p className="text-slate-400 mb-8">
+        <p className="text-[#9AA3AD] mb-8">
           Tell us about the interview you want to practice.
         </p>
 
         <div className="space-y-5">
 
           <input
-            className="w-full bg-slate-800 rounded-xl p-4 text-white"
+            className="w-full bg-[#1D2126] rounded-xl p-4 text-white"
             placeholder="Job Role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
           />
 
           <input
-            className="w-full bg-slate-800 rounded-xl p-4 text-white"
+            className="w-full bg-[#1D2126] rounded-xl p-4 text-white"
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
@@ -69,14 +69,14 @@ export default function CreateInterview() {
 
           <input
             type="number"
-            className="w-full bg-slate-800 rounded-xl p-4 text-white"
+            className="w-full bg-[#1D2126] rounded-xl p-4 text-white"
             placeholder="Years of Experience"
             value={experience}
             onChange={(e) => setExperience(Number(e.target.value))}
           />
 
           <input
-            className="w-full bg-slate-800 rounded-xl p-4 text-white"
+            className="w-full bg-[#1D2126] rounded-xl p-4 text-white"
             placeholder="Tech Stack (React, Node, Java...)"
             value={techStack}
             onChange={(e) => setTechStack(e.target.value)}
@@ -85,7 +85,7 @@ export default function CreateInterview() {
           <button
             onClick={handleCreate}
             disabled={loading}
-            className="w-full bg-cyan-500 hover:bg-cyan-400 rounded-xl p-4 text-black font-bold"
+            className="w-full bg-[#4F7CAC] hover:bg-cyan-400 rounded-xl p-4 text-white font-bold"
           >
             {loading ? "Generating AI Questions..." : "Start Interview"}
           </button>

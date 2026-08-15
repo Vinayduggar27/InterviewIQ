@@ -16,8 +16,8 @@ export default function Button({
 
   const styles =
     variant === "primary"
-      ? "bg-cyan-500 hover:bg-cyan-400 text-slate-950"
-      : "border border-slate-700 hover:border-cyan-400 text-white";
+      ? "bg-[#4F7CAC] hover:bg-cyan-400 text-slate-950"
+      : "border border-[#2F3D4B] hover:border-cyan-400 text-white";
 
   return (
     <button

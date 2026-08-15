@@ -28,7 +28,7 @@ export default function FAQ() {
   const [open, setOpen] =useState<number | null>(0);
 
   return (
-    <section className="bg-slate-950 py-24">
+    <section className="bg-[#12181F] py-24">
 
       <div className="max-w-4xl mx-auto px-6">
 
@@ -42,7 +42,7 @@ export default function FAQ() {
 
             <div
               key={faq.question}
-              className="bg-slate-800 rounded-xl overflow-hidden"
+              className="bg-[#1D2126] rounded-xl overflow-hidden"
             >
 
               <button
@@ -64,7 +64,7 @@ export default function FAQ() {
 
               {open===index &&(
 
-                <div className="px-6 pb-6 text-slate-400">
+                <div className="px-6 pb-6 text-[#9AA3AD]">
                   {faq.answer}
                 </div>
 

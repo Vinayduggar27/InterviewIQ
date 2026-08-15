@@ -33,24 +33,24 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex justify-center items-center">
+    <div className="min-h-screen bg-[#12181F] flex justify-center items-center">
       <form
         onSubmit={handleRegister}
-        className="bg-slate-900 p-8 rounded-xl w-[400px] space-y-5"
+        className="bg-[#151B22] p-8 rounded-xl w-[400px] space-y-5"
       >
         <h1 className="text-3xl text-white font-bold text-center">
           Create Account
         </h1>
 
         <input
-          className="w-full p-3 rounded bg-slate-800 text-white"
+          className="w-full p-3 rounded bg-[#1D2126] text-white"
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
 
         <input
-          className="w-full p-3 rounded bg-slate-800 text-white"
+          className="w-full p-3 rounded bg-[#1D2126] text-white"
           placeholder="Email"
           type="email"
           value={email}
@@ -58,7 +58,7 @@ export default function Register() {
         />
 
         <input
-          className="w-full p-3 rounded bg-slate-800 text-white"
+          className="w-full p-3 rounded bg-[#1D2126] text-white"
           placeholder="Password"
           type="password"
           value={password}

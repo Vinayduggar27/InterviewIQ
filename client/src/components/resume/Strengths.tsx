@@ -2,29 +2,51 @@ interface StrengthsProps {
   strengths: string[];
 }
 
-const Strengths = ({ strengths }: StrengthsProps) => {
+export default function Strengths({
+  strengths,
+}: StrengthsProps) {
   return (
-    <div className="bg-white rounded-3xl border-t-4 border-green-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6">
-      <h2 className="text-2xl font-bold text-green-700 mb-6 flex items-center gap-2">
-        ✅ Strengths
-      </h2>
+    <div className="h-full rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-7">
 
-      {strengths.length === 0 ? (
-        <p className="text-gray-500">No strengths found.</p>
-      ) : (
-        <ul className="space-y-4">
-          {strengths.map((item, index) => (
-            <li
-              key={index}
-              className="bg-green-50 border border-green-100 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200"
-            >
+      <div className="flex items-center gap-3">
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4F7CAC]/15 text-[#6B8FB8]">
+          ✓
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-white">
+            Strengths
+          </h2>
+
+          <p className="text-sm text-[#9AA3AD]">
+            What's working well in your resume
+          </p>
+        </div>
+
+      </div>
+
+      <div className="mt-6 space-y-3">
+
+        {strengths.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-start gap-3 rounded-xl border border-[#2F3D4B] bg-[#1D2126] p-4 transition hover:border-[#4F7CAC]"
+          >
+
+            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#4F7CAC]/15 text-sm text-[#6B8FB8]">
+              ✓
+            </span>
+
+            <p className="text-sm leading-6 text-[#C7CDD4]">
               {item}
-            </li>
-          ))}
-        </ul>
-      )}
+            </p>
+
+          </div>
+        ))}
+
+      </div>
+
     </div>
   );
-};
-
-export default Strengths;
+}

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { getDashboardStats } from "../../services/dashboardservice";
+import { getInterviews } from "../../services/interviewservice";
 
 import Sidebar from "../../components/dashboard/Sidebar";
 import Topbar from "../../components/dashboard/Topbar";
@@ -10,104 +12,97 @@ import QuickActions from "../../components/dashboard/QuickActions";
 import ActivityFeed from "../../components/dashboard/ActivityFeed";
 import AIRecommendations from "../../components/dashboard/AIRecommendations";
 
-
-import { getInterviews } from "../../services/interviewservice";
-
 export default function Dashboard() {
   const [interviews, setInterviews] = useState<any[]>([]);
   const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
-    const loadInterviews = async () => {
+    const loadDashboard = async () => {
       try {
-        const data = await getInterviews();
-        setInterviews(data);
+        const interviewData = await getInterviews();
+        setInterviews(interviewData);
+
         const dashboardData = await getDashboardStats();
-setStats(dashboardData);
+        setStats(dashboardData);
       } catch (err) {
-        console.error(err);
+        console.error("Dashboard loading error:", err);
       }
     };
 
-    loadInterviews();
+    loadDashboard();
   }, []);
 
- return (
-  <div className="min-h-screen bg-slate-950 text-white flex">
+  return (
+    <div className="min-h-screen bg-[#12181F] text-white flex">
+
+      {/* ================= SIDEBAR ================= */}
       <Sidebar />
 
-      <main className="flex-1">
+      {/* ================= MAIN CONTENT ================= */}
+      <main className="flex-1 min-w-0">
+
+        {/* Topbar */}
         <Topbar />
 
-        <div className="p-8">
-         
+        {/* Dashboard Content */}
+        <div className="p-6 lg:p-7">
 
-          <div className="grid md:grid-cols-4 gap-6 mt-8">
-           <StatCard
-  title="Interviews"
-  value={`${stats?.totalInterviews ?? 0}`}
-/>
+          {/* ================= STATS ================= */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
 
-<StatCard
-  title="Average Score"
-  value={`${stats?.averageScore ?? 0}%`}
-/>
+            <StatCard
+              title="Interviews"
+              value={`${stats?.totalInterviews ?? 0}`}
+            />
 
-<StatCard
-  title="Highest Score"
-  value={`${stats?.highestScore ?? 0}%`}
-/>
+            <StatCard
+              title="Average Score"
+              value={`${stats?.averageScore ?? 0}%`}
+            />
 
-<StatCard
-  title="Completed"
-  value={`${interviews.filter(i => i.overallScore !== null).length}`}
-/>
+            <StatCard
+              title="Highest Score"
+              value={`${stats?.highestScore ?? 0}%`}
+            />
+
+            <StatCard
+              title="Completed"
+              value={`${
+                interviews.filter(
+                  (i) => i.overallScore !== null
+                ).length
+              }`}
+            />
+
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 mt-10">
-            <div className="lg:col-span-2">
+          {/* ================= CHART + QUICK ACTIONS ================= */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 mt-5">
+
+            <div className="xl:col-span-2">
               <ProgressChart interviews={interviews} />
             </div>
 
             <QuickActions />
+
           </div>
 
-          {/* TEMPORARY LIVE INTERVIEWS */}
-          <div className="bg-slate-900 rounded-xl p-6 mt-8">
-            <h2 className="text-xl font-bold mb-4">
-              My Interviews
-            </h2>
+          {/* ================= RECENT INTERVIEWS + AI ================= */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 mt-5">
 
-            {interviews.length === 0 ? (
-              <p className="text-slate-400">
-                No interviews yet.
-              </p>
-            ) : (
-              interviews.map((interview) => (
-                <div
-                  key={interview.id}
-                  className="border-b border-slate-700 py-3"
-                >
-                  <h3 className="font-semibold">
-                    {interview.role}
-                  </h3>
-
-                  <p className="text-slate-400">
-                    {interview.company}
-                  </p>
-                </div>
-              ))
-            )}
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6 mt-8">
-            <div className="lg:col-span-2 space-y-6">
+            <div className="xl:col-span-2">
               <RecentInterviews interviews={interviews} />
-              <ActivityFeed interviews={interviews} />
             </div>
 
             <AIRecommendations interviews={interviews} />
+
           </div>
+
+          {/* ================= ACTIVITY ================= */}
+          <div className="mt-5">
+            <ActivityFeed interviews={interviews} />
+          </div>
+
         </div>
       </main>
     </div>

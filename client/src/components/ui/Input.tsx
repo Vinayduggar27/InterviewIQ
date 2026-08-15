@@ -8,7 +8,7 @@ export default function Input({
 }: InputProps) {
   return (
     <input
-      className={`w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none ${className}`}
+      className={`w-full px-4 py-3 rounded-xl bg-[#151B22] border border-[#2F3D4B] text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none ${className}`}
       {...props}
     />
   );

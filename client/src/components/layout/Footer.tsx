@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-slate-800">
+    <footer className="bg-black border-t border-[#2F3D4B]">
 
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center">
 
-        <h2 className="text-3xl font-bold text-cyan-400">
+        <h2 className="text-3xl font-bold text-[#6B8FB8]">
           InterviewIQ
         </h2>
 

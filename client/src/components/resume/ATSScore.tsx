@@ -1,134 +1,103 @@
-import { useEffect, useState } from "react";
-
 interface ATSScoreProps {
   score: number;
 }
 
-const ATSScore = ({ score }: ATSScoreProps) => {
-  const [displayScore, setDisplayScore] = useState(0);
-
-  useEffect(() => {
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current++;
-
-      setDisplayScore(current);
-
-      if (current >= score) {
-        clearInterval(timer);
-      }
-    }, 18);
-
-    return () => clearInterval(timer);
-  }, [score]);
-
-  const radius = 80;
-  const stroke = 12;
-  const normalizedRadius = radius - stroke / 2;
-
-  const circumference = normalizedRadius * 2 * Math.PI;
-
-  const strokeDashoffset =
-    circumference - (displayScore / 100) * circumference;
-
-  const getColor = () => {
-    if (score >= 85) return "#22c55e";
-    if (score >= 70) return "#3b82f6";
-    if (score >= 50) return "#f59e0b";
-    return "#ef4444";
-  };
-
+export default function ATSScore({ score }: ATSScoreProps) {
   const getLabel = () => {
     if (score >= 85) return "Excellent";
-    if (score >= 70) return "Very Good";
-    if (score >= 50) return "Average";
-    return "Needs Improvement";
+    if (score >= 70) return "Good";
+    if (score >= 50) return "Needs Improvement";
+    return "Poor";
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center">
+    <div className="h-full rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-7">
 
-      <div className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center mb-5 text-3xl">
-        📊
+      {/* Header */}
+      <div className="flex items-center justify-between">
+
+        <div>
+          <p className="text-sm text-[#9AA3AD]">
+            Resume Score
+          </p>
+
+          <h2 className="mt-1 text-xl font-semibold text-white">
+            ATS Compatibility
+          </h2>
+        </div>
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4F7CAC]/15 text-[#6B8FB8]">
+          📊
+        </div>
+
       </div>
 
-      <h2 className="text-2xl font-bold text-gray-800">
-        ATS Score
-      </h2>
+      {/* Score */}
+      <div className="mt-8 flex flex-col items-center">
 
-      <p className="text-gray-500 mt-2 text-center">
-        Overall resume compatibility
-      </p>
+        <div className="relative flex h-44 w-44 items-center justify-center">
 
-      <div className="relative w-56 h-56 mt-8">
-
-        <svg
-          height="100%"
-          width="100%"
-          viewBox="0 0 180 180"
-        >
-          <circle
-            stroke="#EEF2FF"
-            fill="transparent"
-            strokeWidth={stroke}
-            r={normalizedRadius}
-            cx="90"
-            cy="90"
-          />
-
-          <circle
-            stroke={getColor()}
-            fill="transparent"
-            strokeWidth={stroke}
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            style={{
-              transition: "stroke-dashoffset .25s ease",
-            }}
-            r={normalizedRadius}
-            cx="90"
-            cy="90"
-            transform="rotate(-90 90 90)"
-          />
-        </svg>
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-
-          <span className="text-5xl font-bold text-gray-800">
-            {displayScore}%
-          </span>
-
-          <span
-            className="mt-3 px-4 py-1 rounded-full text-sm font-semibold"
-            style={{
-              backgroundColor: `${getColor()}20`,
-              color: getColor(),
-            }}
+          <svg
+            className="absolute h-full w-full -rotate-90"
+            viewBox="0 0 100 100"
           >
-            {getLabel()}
-          </span>
+            <circle
+              cx="50"
+              cy="50"
+              r="42"
+              fill="none"
+              stroke="#1D2126"
+              strokeWidth="8"
+            />
+
+            <circle
+              cx="50"
+              cy="50"
+              r="42"
+              fill="none"
+              stroke="#4F7CAC"
+              strokeWidth="8"
+              strokeLinecap="round"
+              strokeDasharray={`${score * 2.64} 264`}
+            />
+          </svg>
+
+          <div className="text-center">
+
+            <p className="text-4xl font-bold text-white">
+              {score}%
+            </p>
+
+            <p className="mt-1 text-sm text-[#6B8FB8]">
+              {getLabel()}
+            </p>
+
+          </div>
 
         </div>
 
       </div>
 
-      <div className="mt-8 w-full border-t pt-6">
+      {/* Bottom information */}
+      <div className="mt-8 border-t border-[#2F3D4B] pt-5">
 
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
-          <span>Resume Quality</span>
-          <span>{score}/100</span>
+        <div className="flex items-center justify-between">
+
+          <span className="text-sm text-[#9AA3AD]">
+            Resume Quality
+          </span>
+
+          <span className="font-semibold text-[#C7CDD4]">
+            {score}/100
+          </span>
+
         </div>
 
-        <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#1D2126]">
 
           <div
-            className="h-full rounded-full transition-all duration-700"
-            style={{
-              width: `${displayScore}%`,
-              backgroundColor: getColor(),
-            }}
+            className="h-full rounded-full bg-[#4F7CAC] transition-all duration-700"
+            style={{ width: `${score}%` }}
           />
 
         </div>
@@ -137,6 +106,4 @@ const ATSScore = ({ score }: ATSScoreProps) => {
 
     </div>
   );
-};
-
-export default ATSScore;
+}

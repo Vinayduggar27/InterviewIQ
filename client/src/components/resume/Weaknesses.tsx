@@ -2,29 +2,55 @@ interface WeaknessesProps {
   weaknesses: string[];
 }
 
-const Weaknesses = ({ weaknesses }: WeaknessesProps) => {
+export default function Weaknesses({
+  weaknesses,
+}: WeaknessesProps) {
   return (
-    <div className="bg-white rounded-3xl border-t-4 border-red-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6">
-      <h2 className="text-2xl font-bold text-red-700 mb-6 flex items-center gap-2">
-        ❌ Weaknesses
-      </h2>
+    <div className="rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-7">
 
-      {weaknesses.length === 0 ? (
-        <p className="text-gray-500">No weaknesses found.</p>
-      ) : (
-        <ul className="space-y-4">
-          {weaknesses.map((item, index) => (
-            <li
-              key={index}
-              className="bg-red-50 border border-red-100 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="flex items-center gap-3">
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+          !
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-white">
+            Areas to Improve
+          </h2>
+
+          <p className="text-sm text-[#9AA3AD]">
+            Things you can strengthen
+          </p>
+        </div>
+
+      </div>
+
+      <div className="mt-6 space-y-3">
+
+        {weaknesses.map((item, index) => (
+          <div
+            key={index}
+            className="rounded-xl border border-[#2F3D4B] bg-[#1D2126] p-4"
+          >
+
+            <div className="flex items-start gap-3">
+
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-sm text-red-400">
+                !
+              </span>
+
+              <p className="text-sm leading-6 text-[#C7CDD4]">
+                {item}
+              </p>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+
     </div>
   );
-};
-
-export default Weaknesses;
+}

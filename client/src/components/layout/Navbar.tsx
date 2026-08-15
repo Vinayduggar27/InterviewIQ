@@ -2,54 +2,67 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <nav className="w-full bg-[#10151C] border-b border-[#2F3D4B]">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
         {/* Logo */}
         <Link
           to="/"
-          className="text-3xl font-bold text-cyan-400 tracking-tight"
+          className="text-2xl font-bold text-[#6B8FB8] hover:text-[#8BA8C7] transition"
         >
           InterviewIQ
         </Link>
 
         {/* Navigation */}
-        <div className="hidden md:flex items-center gap-8 text-slate-300">
-          <a href="#features" className="hover:text-cyan-400 transition">
+        <div className="hidden md:flex items-center gap-8 text-[#C7CDD4]">
+          <a
+            href="#features"
+            className="hover:text-[#6B8FB8] transition"
+          >
             Features
           </a>
 
-          <a href="#how-it-works" className="hover:text-cyan-400 transition">
+          <a
+            href="#how-it-works"
+            className="hover:text-[#6B8FB8] transition"
+          >
             How It Works
           </a>
 
-          <a href="#testimonials" className="hover:text-cyan-400 transition">
+          <a
+            href="#testimonials"
+            className="hover:text-[#6B8FB8] transition"
+          >
             Testimonials
           </a>
 
-          <a href="#faq" className="hover:text-cyan-400 transition">
+          <a
+            href="#faq"
+            className="hover:text-[#6B8FB8] transition"
+          >
             FAQ
           </a>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-4">
-          <button className="text-slate-300 hover:text-white transition">
-            <Link
-  to="/login"
-  className="text-slate-300 hover:text-cyan-400 transition"
->
-  Login
-</Link>
-          </button>
+        <div className="flex items-center gap-4">
 
-          <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-5 py-2 rounded-xl transition">
-            <Link
-  to="/register"
-  className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-3 rounded-xl font-semibold transition"
->
-  Get Started
-</Link>
-          </button>
+          {/* Login */}
+          <Link
+            to="/login"
+            className="text-[#C7CDD4] hover:text-white transition font-medium"
+          >
+            Login
+          </Link>
+
+          {/* Get Started */}
+          <Link
+            to="/register"
+            className="bg-[#4F7CAC] hover:bg-[#3F6790] text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm"
+          >
+            Get Started
+          </Link>
+
         </div>
       </div>
     </nav>

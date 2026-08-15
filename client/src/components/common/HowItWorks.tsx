@@ -1,66 +1,87 @@
 import { motion } from "framer-motion";
-import { FaUserPlus, FaMicrophone, FaChartLine } from "react-icons/fa";
+import {
+  FaUserPlus,
+  FaMicrophone,
+  FaChartLine,
+} from "react-icons/fa";
 
 const steps = [
   {
-    icon: <FaUserPlus size={36} />,
+    icon: <FaUserPlus size={34} />,
     title: "Create an Account",
-    description: "Sign up in seconds and personalize your interview journey.",
+    description:
+      "Sign up in seconds and personalize your interview journey.",
   },
   {
-    icon: <FaMicrophone size={36} />,
+    icon: <FaMicrophone size={34} />,
     title: "Take an AI Interview",
-    description: "Practice with realistic AI interview questions anytime.",
+    description:
+      "Practice with realistic AI interview questions anytime.",
   },
   {
-    icon: <FaChartLine size={36} />,
+    icon: <FaChartLine size={34} />,
     title: "Get Instant Feedback",
-    description: "Receive detailed performance analysis and improvement tips.",
+    description:
+      "Receive detailed performance analysis and improvement tips.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="bg-slate-950 py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      id="how-it-works"
+      className="bg-[#12181F] py-20 px-6"
+    >
+      <div className="max-w-7xl mx-auto">
 
-        <h2 className="text-5xl font-bold text-center text-white">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-5xl font-bold text-center text-white"
+        >
           How It Works
-        </h2>
+        </motion.h2>
 
-        <p className="text-center text-slate-400 mt-4 mb-16">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-center text-[#9AA3AD] mt-4 mb-16"
+        >
           Three simple steps to become interview-ready.
-        </p>
+        </motion.p>
 
+        {/* Steps */}
         <div className="grid md:grid-cols-3 gap-10">
-
           {steps.map((step, index) => (
-
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-slate-800 rounded-2xl p-8 text-center shadow-xl"
+              className="bg-[#151B22] border border-[#2F3D4B] rounded-2xl p-8 text-center shadow-sm hover:border-[#4F7CAC] transition-all duration-300"
             >
-
-              <div className="flex justify-center text-cyan-400 mb-6">
+              {/* Icon */}
+              <div className="flex justify-center text-[#6B8FB8] mb-6">
                 {step.icon}
               </div>
 
+              {/* Title */}
               <h3 className="text-2xl font-bold text-white">
                 {step.title}
               </h3>
 
-              <p className="text-slate-400 mt-4">
+              {/* Description */}
+              <p className="text-[#9AA3AD] mt-4">
                 {step.description}
               </p>
-
             </motion.div>
-
           ))}
-
         </div>
 
       </div>

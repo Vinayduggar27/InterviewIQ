@@ -36,18 +36,18 @@ export default function Settings() {
   const [showDeletePassword, setShowDeletePassword] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
+    <div className="min-h-screen bg-[#12181F] text-white p-8">
       <div className="max-w-5xl mx-auto">
 
         <div className="flex items-center gap-4 mb-10">
-          <FiSettings className="text-cyan-400" size={42} />
+          <FiSettings className="text-[#6B8FB8]" size={42} />
 
           <div>
             <h1 className="text-5xl font-bold">
               Settings
             </h1>
 
-            <p className="text-slate-400 mt-2">
+            <p className="text-[#9AA3AD] mt-2">
               Manage your InterviewIQ account.
             </p>
           </div>
@@ -56,16 +56,16 @@ export default function Settings() {
         <div className="space-y-6">
 
                   {/* Edit Profile */}
-        <div className="bg-slate-900 rounded-3xl p-6 border border-slate-800 hover:border-cyan-500 transition cursor-pointer">
+        <div className="bg-[#151B22] rounded-3xl p-6 border border-[#2F3D4B] hover:border-[#4F7CAC] transition cursor-pointer">
           <div className="flex items-center gap-5">
-            <FiUser size={28} className="text-cyan-400" />
+            <FiUser size={28} className="text-[#6B8FB8]" />
 
             <div>
               <h2 className="text-2xl font-semibold">
                 Edit Profile
               </h2>
 
-              <p className="text-slate-400">
+              <p className="text-[#9AA3AD]">
                 Update your personal information.
               </p>
             </div>
@@ -75,17 +75,17 @@ export default function Settings() {
         {/* Change Password */}
         <div
           onClick={() => setShowPasswordModal(true)}
-          className="bg-slate-900 rounded-3xl p-6 border border-slate-800 hover:border-cyan-500 transition cursor-pointer"
+          className="bg-[#151B22] rounded-3xl p-6 border border-[#2F3D4B] hover:border-[#4F7CAC] transition cursor-pointer"
         >
           <div className="flex items-center gap-5">
-            <FiLock size={28} className="text-cyan-400" />
+            <FiLock size={28} className="text-[#6B8FB8]" />
 
             <div>
               <h2 className="text-2xl font-semibold">
                 Change Password
               </h2>
 
-              <p className="text-slate-400">
+              <p className="text-[#9AA3AD]">
                 Update your account password.
               </p>
             </div>
@@ -93,16 +93,16 @@ export default function Settings() {
         </div>
 
         {/* Appearance */}
-        <div className="bg-slate-900 rounded-3xl p-6 border border-slate-800 hover:border-cyan-500 transition cursor-pointer">
+        <div className="bg-[#151B22] rounded-3xl p-6 border border-[#2F3D4B] hover:border-[#4F7CAC] transition cursor-pointer">
           <div className="flex items-center gap-5">
-            <FiMoon size={28} className="text-cyan-400" />
+            <FiMoon size={28} className="text-[#6B8FB8]" />
 
             <div>
               <h2 className="text-2xl font-semibold">
                 Appearance
               </h2>
 
-              <p className="text-slate-400">
+              <p className="text-[#9AA3AD]">
                 Dark mode support coming soon.
               </p>
             </div>
@@ -110,16 +110,16 @@ export default function Settings() {
         </div>
 
         {/* Notifications */}
-        <div className="bg-slate-900 rounded-3xl p-6 border border-slate-800 hover:border-cyan-500 transition cursor-pointer">
+        <div className="bg-[#151B22] rounded-3xl p-6 border border-[#2F3D4B] hover:border-[#4F7CAC] transition cursor-pointer">
           <div className="flex items-center gap-5">
-            <FiBell size={28} className="text-cyan-400" />
+            <FiBell size={28} className="text-[#6B8FB8]" />
 
             <div>
               <h2 className="text-2xl font-semibold">
                 Notifications
               </h2>
 
-              <p className="text-slate-400">
+              <p className="text-[#9AA3AD]">
                 Manage your notification preferences.
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function Settings() {
                 {/* ================= Change Password Modal ================= */}
         {showPasswordModal && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="w-full max-w-lg bg-slate-900 rounded-3xl border border-slate-700 p-8">
+            <div className="w-full max-w-lg bg-[#151B22] rounded-3xl border border-[#2F3D4B] p-8">
 
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">
@@ -229,7 +229,7 @@ export default function Settings() {
                         currentPassword: e.target.value,
                       })
                     }
-                    className="w-full rounded-xl bg-slate-800 p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
+                    className="w-full rounded-xl bg-[#1D2126] p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
                   />
 
                   <button
@@ -237,7 +237,7 @@ export default function Settings() {
                     onClick={() =>
                       setShowCurrentPassword(!showCurrentPassword)
                     }
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9AA3AD] hover:text-white"
                   >
                     {showCurrentPassword ? (
                       <FiEyeOff size={20} />
@@ -259,7 +259,7 @@ export default function Settings() {
                         newPassword: e.target.value,
                       })
                     }
-                    className="w-full rounded-xl bg-slate-800 p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
+                    className="w-full rounded-xl bg-[#1D2126] p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
                   />
 
                   <button
@@ -267,7 +267,7 @@ export default function Settings() {
                     onClick={() =>
                       setShowNewPassword(!showNewPassword)
                     }
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9AA3AD] hover:text-white"
                   >
                     {showNewPassword ? (
                       <FiEyeOff size={20} />
@@ -289,7 +289,7 @@ export default function Settings() {
                         confirmPassword: e.target.value,
                       })
                     }
-                    className="w-full rounded-xl bg-slate-800 p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
+                    className="w-full rounded-xl bg-[#1D2126] p-3 pr-12 outline-none focus:ring-2 focus:ring-cyan-500"
                   />
 
                   <button
@@ -297,7 +297,7 @@ export default function Settings() {
                     onClick={() =>
                       setShowConfirmPassword(!showConfirmPassword)
                     }
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9AA3AD] hover:text-white"
                   >
                     {showConfirmPassword ? (
                       <FiEyeOff size={20} />
@@ -377,7 +377,7 @@ export default function Settings() {
                       );
                     }
                   }}
-                  className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-600 transition"
+                  className="px-5 py-2 rounded-xl bg-[#4F7CAC] hover:bg-[#426A91] transition"
                 >
                   Update Password
                 </button>
@@ -391,7 +391,7 @@ export default function Settings() {
                 {/* ================= Delete Account Modal ================= */}
 {showDeleteModal && (
   <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-    <div className="w-full max-w-md bg-slate-900 rounded-3xl border border-red-700 p-8">
+    <div className="w-full max-w-md bg-[#151B22] rounded-3xl border border-red-700 p-8">
 
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
@@ -411,7 +411,7 @@ export default function Settings() {
       </div>
 
       {/* Warning */}
-      <p className="text-slate-400 mb-6">
+      <p className="text-[#9AA3AD] mb-6">
         This action is permanent and cannot be undone.
         Please enter your password to confirm.
       </p>
@@ -423,7 +423,7 @@ export default function Settings() {
           placeholder="Enter your password"
           value={deletePassword}
           onChange={(e) => setDeletePassword(e.target.value)}
-          className="w-full rounded-xl bg-slate-800 p-3 pr-12 outline-none focus:ring-2 focus:ring-red-500"
+          className="w-full rounded-xl bg-[#1D2126] p-3 pr-12 outline-none focus:ring-2 focus:ring-red-500"
         />
 
         <button
@@ -431,7 +431,7 @@ export default function Settings() {
           onClick={() =>
             setShowDeletePassword(!showDeletePassword)
           }
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9AA3AD] hover:text-white"
         >
           {showDeletePassword ? (
             <FiEyeOff size={20} />

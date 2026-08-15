@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 
-export default function InterviewTimer() {
+interface InterviewTimerProps {
+  currentQuestion?: number;
+  totalQuestions?: number;
+}
+
+export default function InterviewTimer({
+  currentQuestion = 1,
+  totalQuestions = 10,
+}: InterviewTimerProps) {
   const [seconds, setSeconds] = useState(1500);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setSeconds((prev) => {
-        if (prev === 0) return 0;
+        if (prev <= 0) {
+          return 0;
+        }
+
         return prev - 1;
       });
     }, 1000);
@@ -18,35 +29,29 @@ export default function InterviewTimer() {
   const secs = seconds % 60;
 
   return (
-    <div className="bg-slate-900 rounded-xl p-5 flex justify-between">
-
+    <div className="flex items-center justify-between rounded-xl border border-[#2F3D4B] bg-[#151B22] px-6 py-5">
+      {/* Remaining Time */}
       <div>
-
-        <p className="text-slate-400">
+        <p className="text-sm text-[#9AA3AD]">
           Remaining Time
         </p>
 
-        <h2 className="text-4xl font-bold text-cyan-400">
-
+        <h2 className="mt-1 text-3xl font-bold text-[#6B8FB8]">
           {String(minutes).padStart(2, "0")}:
           {String(secs).padStart(2, "0")}
-
         </h2>
-
       </div>
 
-      <div>
-
-        <p className="text-slate-400">
+      {/* Question */}
+      <div className="text-right">
+        <p className="text-sm text-[#9AA3AD]">
           Question
         </p>
 
-        <h2 className="text-3xl font-bold">
-          1 / 10
+        <h2 className="mt-1 text-2xl font-bold text-white">
+          {currentQuestion} / {totalQuestions}
         </h2>
-
       </div>
-
     </div>
   );
 }

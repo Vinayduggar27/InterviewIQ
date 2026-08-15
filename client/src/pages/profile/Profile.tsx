@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   FiGithub,
   FiLinkedin,
@@ -28,201 +28,337 @@ export default function Profile() {
   });
 
   useEffect(() => {
-  loadProfile();
-}, []);
+    loadProfile();
+  }, []);
 
-const loadProfile = async () => {
-  try {
-    const { data } = await getProfile();
-    setUser((prev) => ({
-      ...prev,
-      ...data,
-    }));
-  } catch (err) {
-    console.error(err);
-  }
-};
+  const loadProfile = async () => {
+    try {
+      const { data } = await getProfile();
+
+      setUser((prev) => ({
+        ...prev,
+        ...data,
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
-      <h1 className="text-4xl font-bold mb-8">👤 My Profile</h1>
+    <div className="min-h-screen bg-[#12181F] px-6 py-8 text-white lg:px-10">
+      <div className="mx-auto max-w-6xl">
 
-      <div className="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-xl">
+        {/* ================= HEADER ================= */}
+        <div className="mb-8">
+          <p className="text-sm font-medium text-[#6B8FB8]">
+            InterviewIQ
+          </p>
 
-        <div className="flex items-center gap-6">
+          <h1 className="mt-1 text-3xl font-bold">
+            My Profile
+          </h1>
 
-          <div className="w-28 h-28 rounded-full bg-cyan-500 flex items-center justify-center text-4xl font-bold">
-            {user.name.charAt(0)}
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-bold">{user.name}</h2>
-            <p className="text-slate-400">{user.course}</p>
-            <p className="text-slate-400">{user.university}</p>
-          </div>
-
-          <button
-            onClick={() => setShowModal(true)}
-            className="ml-auto bg-cyan-500 hover:bg-cyan-600 px-5 py-2 rounded-xl flex items-center gap-2"
-          >
-            <FiEdit size={18} />
-            Edit Profile
-          </button>
-
+          <p className="mt-2 text-[#9AA3AD]">
+            Manage your profile and view your interview performance.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-10">
+        {/* ================= PROFILE CARD ================= */}
+        <div className="rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-6 shadow-xl lg:p-8">
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <FiMail className="mb-2 text-cyan-400" size={22} />
-            <p className="text-slate-400">Email</p>
-            <p>{user.email}</p>
+          <div className="flex flex-col gap-6 md:flex-row md:items-center">
+
+            {/* Avatar */}
+            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#4F7CAC] text-4xl font-bold text-white">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
+
+            {/* User Info */}
+            <div className="flex-1">
+              <h2 className="text-3xl font-bold">
+                {user.name}
+              </h2>
+
+              <p className="mt-2 text-[#C7CDD4]">
+                {user.course}
+              </p>
+
+              <p className="mt-1 text-[#9AA3AD]">
+                {user.university}
+              </p>
+            </div>
+
+            {/* Edit */}
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#4F7CAC] px-5 py-3 font-semibold text-white transition hover:bg-[#3F6790]"
+            >
+              <FiEdit size={18} />
+              Edit Profile
+            </button>
+          </div>
+        </div>
+
+        {/* ================= INFORMATION ================= */}
+        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+
+          {/* Email */}
+          <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+            <FiMail
+              size={22}
+              className="mb-4 text-[#6B8FB8]"
+            />
+
+            <p className="text-sm text-[#9AA3AD]">
+              Email
+            </p>
+
+            <p className="mt-1 break-all text-white">
+              {user.email}
+            </p>
           </div>
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <FiGithub className="mb-2 text-cyan-400" size={22} />
+          {/* GitHub */}
+          <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+            <FiGithub
+              size={22}
+              className="mb-4 text-[#6B8FB8]"
+            />
+
+            <p className="text-sm text-[#9AA3AD]">
+              GitHub
+            </p>
+
             <a
               href={user.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-400"
+              className="mt-1 block text-white transition hover:text-[#6B8FB8]"
             >
-              GitHub Profile
+              GitHub Profile →
             </a>
           </div>
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <FiLinkedin className="mb-2 text-cyan-400" size={22} />
+          {/* LinkedIn */}
+          <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+            <FiLinkedin
+              size={22}
+              className="mb-4 text-[#6B8FB8]"
+            />
+
+            <p className="text-sm text-[#9AA3AD]">
+              LinkedIn
+            </p>
+
             <a
               href={user.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-400"
+              className="mt-1 block text-white transition hover:text-[#6B8FB8]"
             >
-              LinkedIn Profile
+              LinkedIn Profile →
             </a>
           </div>
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <p>Total Interviews</p>
-            <h2 className="text-3xl font-bold">{user.interviews}</h2>
-          </div>
+          {/* University */}
+          <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+            <p className="text-sm text-[#9AA3AD]">
+              Education
+            </p>
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <p>Average Score</p>
-            <h2 className="text-3xl font-bold">{user.averageScore}%</h2>
-          </div>
+            <p className="mt-2 font-semibold text-white">
+              {user.course}
+            </p>
 
-          <div className="bg-slate-800 rounded-2xl p-5">
-            <p>ATS Score</p>
-            <h2 className="text-3xl font-bold">{user.atsScore}</h2>
+            <p className="mt-1 text-sm text-[#9AA3AD]">
+              {user.university}
+            </p>
           </div>
-
         </div>
 
+        {/* ================= PERFORMANCE ================= */}
+        <div className="mt-8">
+
+          <h2 className="mb-4 text-2xl font-bold">
+            Performance Overview
+          </h2>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+
+            {/* Interviews */}
+            <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+              <p className="text-sm text-[#9AA3AD]">
+                Total Interviews
+              </p>
+
+              <h3 className="mt-3 text-4xl font-bold text-[#6B8FB8]">
+                {user.interviews}
+              </h3>
+            </div>
+
+            {/* Average */}
+            <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+              <p className="text-sm text-[#9AA3AD]">
+                Average Score
+              </p>
+
+              <h3 className="mt-3 text-4xl font-bold text-[#6B8FB8]">
+                {user.averageScore}%
+              </h3>
+            </div>
+
+            {/* ATS */}
+            <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-6">
+              <p className="text-sm text-[#9AA3AD]">
+                ATS Score
+              </p>
+
+              <h3 className="mt-3 text-4xl font-bold text-[#6B8FB8]">
+                {user.atsScore}
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* ===================== EDIT PROFILE MODAL ===================== */}
-
+      {/* ================= EDIT PROFILE MODAL ================= */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
 
-          <div className="bg-slate-900 w-full max-w-xl rounded-3xl p-8 border border-slate-700">
+          <div className="w-full max-w-xl rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-6 shadow-2xl lg:p-8">
 
-            <div className="flex justify-between items-center mb-6">
+            {/* Modal Header */}
+            <div className="mb-6 flex items-center justify-between">
 
-              <h2 className="text-2xl font-bold">
-                Edit Profile
-              </h2>
+              <div>
+                <h2 className="text-2xl font-bold">
+                  Edit Profile
+                </h2>
 
-              <button onClick={() => setShowModal(false)}>
-                <FiX size={24} />
-              </button>
-
-            </div>
-
-            <div className="space-y-5">
-
-              <input
-                className="w-full bg-slate-800 p-3 rounded-xl outline-none focus:ring-2 focus:ring-cyan-500"
-                value={user.name}
-                onChange={(e) =>
-                  setUser({
-                    ...user,
-                    name: e.target.value,
-                  })
-                }
-                placeholder="Name"
-              />
-
-              <input
-                className="w-full bg-slate-800 p-3 rounded-xl outline-none focus:ring-2 focus:ring-cyan-500"
-                value={user.email}
-                onChange={(e) =>
-                  setUser({
-                    ...user,
-                    email: e.target.value,
-                  })
-                }
-                placeholder="Email"
-              />
-
-              <input
-                className="w-full bg-slate-800 p-3 rounded-xl outline-none focus:ring-2 focus:ring-cyan-500"
-                value={user.university}
-                onChange={(e) =>
-                  setUser({
-                    ...user,
-                    university: e.target.value,
-                  })
-                }
-                placeholder="University"
-              />
-
-              <input
-                className="w-full bg-slate-800 p-3 rounded-xl outline-none focus:ring-2 focus:ring-cyan-500"
-                value={user.course}
-                onChange={(e) =>
-                  setUser({
-                    ...user,
-                    course: e.target.value,
-                  })
-                }
-                placeholder="Course"
-              />
-
-            </div>
-
-            <div className="flex justify-end gap-4 mt-8">
+                <p className="mt-1 text-sm text-[#9AA3AD]">
+                  Update your personal information.
+                </p>
+              </div>
 
               <button
                 onClick={() => setShowModal(false)}
-                className="px-5 py-2 rounded-xl bg-slate-700 hover:bg-slate-600"
+                className="rounded-lg p-2 text-[#9AA3AD] transition hover:bg-[#1D2126] hover:text-white"
+              >
+                <FiX size={22} />
+              </button>
+            </div>
+
+            {/* Inputs */}
+            <div className="space-y-5">
+
+              <div>
+                <label className="mb-2 block text-sm text-[#9AA3AD]">
+                  Name
+                </label>
+
+                <input
+                  className="w-full rounded-xl border border-[#2F3D4B] bg-[#12181F] px-4 py-3 text-white outline-none transition placeholder:text-[#6F7A86] focus:border-[#4F7CAC] focus:ring-1 focus:ring-[#4F7CAC]"
+                  value={user.name}
+                  onChange={(e) =>
+                    setUser({
+                      ...user,
+                      name: e.target.value,
+                    })
+                  }
+                  placeholder="Name"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-[#9AA3AD]">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  className="w-full rounded-xl border border-[#2F3D4B] bg-[#12181F] px-4 py-3 text-white outline-none transition focus:border-[#4F7CAC] focus:ring-1 focus:ring-[#4F7CAC]"
+                  value={user.email}
+                  onChange={(e) =>
+                    setUser({
+                      ...user,
+                      email: e.target.value,
+                    })
+                  }
+                  placeholder="Email"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-[#9AA3AD]">
+                  University
+                </label>
+
+                <input
+                  className="w-full rounded-xl border border-[#2F3D4B] bg-[#12181F] px-4 py-3 text-white outline-none transition focus:border-[#4F7CAC] focus:ring-1 focus:ring-[#4F7CAC]"
+                  value={user.university}
+                  onChange={(e) =>
+                    setUser({
+                      ...user,
+                      university: e.target.value,
+                    })
+                  }
+                  placeholder="University"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm text-[#9AA3AD]">
+                  Course
+                </label>
+
+                <input
+                  className="w-full rounded-xl border border-[#2F3D4B] bg-[#12181F] px-4 py-3 text-white outline-none transition focus:border-[#4F7CAC] focus:ring-1 focus:ring-[#4F7CAC]"
+                  value={user.course}
+                  onChange={(e) =>
+                    setUser({
+                      ...user,
+                      course: e.target.value,
+                    })
+                  }
+                  placeholder="Course"
+                />
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="mt-8 flex justify-end gap-3">
+
+              <button
+                onClick={() => setShowModal(false)}
+                className="rounded-xl border border-[#2F3D4B] bg-[#12181F] px-5 py-3 font-medium text-[#C7CDD4] transition hover:bg-[#1D2126]"
               >
                 Cancel
               </button>
 
               <button
-                onClick={async () => {
-  try {
-    await updateProfile(user);
-    setShowModal(false);
-  } catch (err) {
-    console.error(err);
-  }
-}}
-                className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-600"
-              >
-                Save Changes
-              </button>
+  onClick={async () => {
+    try {
+      await updateProfile({
+  name: user.name,
+});
+
+      alert("Profile updated successfully!");
+
+      setShowModal(false);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to update profile.");
+    }
+  }}
+  className="rounded-xl bg-[#4F7CAC] px-5 py-3 font-semibold text-white transition hover:bg-[#3F6790]"
+>
+  Save Changes
+</button>
 
             </div>
-
           </div>
-
         </div>
       )}
-
     </div>
   );
 }

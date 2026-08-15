@@ -7,7 +7,7 @@ export default function SocialLogin() {
 
     <div className="space-y-3">
 
-      <button className="w-full flex items-center justify-center gap-3 border border-slate-700 rounded-xl py-3 hover:border-cyan-400 transition">
+      <button className="w-full flex items-center justify-center gap-3 border border-[#2F3D4B] rounded-xl py-3 hover:border-cyan-400 transition">
 
         <FcGoogle size={22} />
 
@@ -15,7 +15,7 @@ export default function SocialLogin() {
 
       </button>
 
-      <button className="w-full flex items-center justify-center gap-3 border border-slate-700 rounded-xl py-3 hover:border-cyan-400 transition">
+      <button className="w-full flex items-center justify-center gap-3 border border-[#2F3D4B] rounded-xl py-3 hover:border-cyan-400 transition">
 
         <FaGithub />
 

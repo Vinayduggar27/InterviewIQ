@@ -33,7 +33,7 @@ navigate("/dashboard");
   return (
     <form className="space-y-5" onSubmit={handleLogin}>
       <div>
-        <label className="block text-sm text-slate-300 mb-2">
+        <label className="block text-sm text-[#C7CDD4] mb-2">
           Email
         </label>
 
@@ -46,7 +46,7 @@ navigate("/dashboard");
       </div>
 
       <div>
-        <label className="block text-sm text-slate-300 mb-2">
+        <label className="block text-sm text-[#C7CDD4] mb-2">
           Password
         </label>
 
@@ -57,7 +57,7 @@ navigate("/dashboard");
       </div>
 
       <div className="flex justify-between items-center text-sm">
-        <label className="flex items-center gap-2 text-slate-400">
+        <label className="flex items-center gap-2 text-[#9AA3AD]">
           <input
             type="checkbox"
             className="accent-cyan-500"
@@ -67,7 +67,7 @@ navigate("/dashboard");
 
         <Link
           to="/forgot-password"
-          className="text-cyan-400 hover:underline"
+          className="text-[#6B8FB8] hover:underline"
         >
           Forgot password?
         </Link>
@@ -78,20 +78,20 @@ navigate("/dashboard");
       </Button>
 
       <div className="relative py-2">
-        <div className="border-t border-slate-700"></div>
+        <div className="border-t border-[#2F3D4B]"></div>
 
-        <span className="absolute left-1/2 -translate-x-1/2 -top-1 bg-slate-900 px-4 text-sm text-slate-500">
+        <span className="absolute left-1/2 -translate-x-1/2 -top-1 bg-[#151B22] px-4 text-sm text-slate-500">
           OR
         </span>
       </div>
 
       <SocialLogin />
 
-      <p className="text-center text-slate-400">
+      <p className="text-center text-[#9AA3AD]">
         Don't have an account?{" "}
         <Link
           to="/register"
-          className="text-cyan-400 hover:underline"
+          className="text-[#6B8FB8] hover:underline"
         >
           Create one
         </Link>

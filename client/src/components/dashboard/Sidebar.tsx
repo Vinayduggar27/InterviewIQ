@@ -38,17 +38,17 @@ const menuItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-72 min-h-screen bg-slate-900 border-r border-slate-800 flex flex-col">
+    <aside className="hidden lg:flex w-72 min-h-screen bg-[#10151C] border-r border-[#2F3D4B] flex-col">
 
       {/* Logo */}
-      <div className="p-8 border-b border-slate-800">
-        <h1 className="text-3xl font-extrabold text-cyan-400 tracking-wide">
+      <div className="h-24 flex items-center px-8 border-b border-[#2F3D4B]">
+        <h1 className="text-3xl font-extrabold text-[#6B8FB8] tracking-wide">
           InterviewIQ
         </h1>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-6 space-y-3">
+      <nav className="flex-1 px-5 py-7 space-y-3">
 
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -58,14 +58,14 @@ export default function Sidebar() {
               key={item.name}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
+                `flex items-center gap-4 px-5 py-4 rounded-xl font-medium transition-all duration-200 ${
                   isActive
-                    ? "bg-cyan-500 text-white shadow-lg"
-                    : "text-slate-300 hover:bg-slate-800 hover:text-cyan-400"
+                    ? "bg-[#4F7CAC] text-white"
+                    : "text-[#C7CDD4] hover:bg-[#181E25] hover:text-white"
                 }`
               }
             >
-              <Icon size={20} />
+              <Icon size={21} />
               <span>{item.name}</span>
             </NavLink>
           );
@@ -73,11 +73,13 @@ export default function Sidebar() {
 
       </nav>
 
-      {/* Footer */}
-      <div className="p-6 border-t border-slate-800 text-center">
-        <p className="text-xs text-slate-500">
-          InterviewIQ v1.0
-        </p>
+      {/* Logout / Footer */}
+      <div className="px-5 py-6 border-t border-[#2F3D4B]">
+        <button
+          className="w-full text-left px-5 py-3 text-[#9AA3AD] hover:text-white transition"
+        >
+          Logout
+        </button>
       </div>
 
     </aside>

@@ -2,31 +2,55 @@ interface MissingKeywordsProps {
   keywords: string[];
 }
 
-const MissingKeywords = ({ keywords }: MissingKeywordsProps) => {
+export default function MissingKeywords({
+  keywords,
+}: MissingKeywordsProps) {
   return (
-    <div className="bg-white rounded-3xl border-t-4 border-yellow-500 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6">
-      <h2 className="text-2xl font-bold text-yellow-700 mb-6 flex items-center gap-2">
-        🎯 Missing Keywords
-      </h2>
+    <div className="rounded-2xl border border-[#2F3D4B] bg-[#151B22] p-7">
+
+      <div className="flex items-center gap-3">
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4F7CAC]/15 text-[#6B8FB8]">
+          #
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold text-white">
+            Missing Keywords
+          </h2>
+
+          <p className="text-sm text-[#9AA3AD]">
+            Skills that could improve your ATS score
+          </p>
+        </div>
+
+      </div>
 
       {keywords.length === 0 ? (
-        <p className="text-gray-500">
-          No missing keywords detected.
-        </p>
+
+        <div className="mt-6 rounded-xl border border-[#2F3D4B] bg-[#1D2126] p-5 text-center">
+          <p className="text-sm text-[#9AA3AD]">
+            No important keywords are missing.
+          </p>
+        </div>
+
       ) : (
-        <div className="flex flex-wrap gap-3">
+
+        <div className="mt-6 flex flex-wrap gap-3">
+
           {keywords.map((keyword, index) => (
             <span
               key={index}
-              className="bg-yellow-100 text-yellow-800 border border-yellow-300 px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-yellow-200 transition-all duration-200"
+              className="rounded-xl border border-[#2F3D4B] bg-[#1D2126] px-4 py-2 text-sm text-[#C7CDD4] transition hover:border-[#4F7CAC] hover:text-[#6B8FB8]"
             >
               {keyword}
             </span>
           ))}
+
         </div>
+
       )}
+
     </div>
   );
-};
-
-export default MissingKeywords;
+}

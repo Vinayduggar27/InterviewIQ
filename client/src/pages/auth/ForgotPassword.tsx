@@ -20,13 +20,13 @@ export default function ForgotPassword() {
           Send Reset Link
         </Button>
 
-        <p className="text-center text-slate-400">
+        <p className="text-center text-[#9AA3AD]">
 
           Remember your password?{" "}
 
           <Link
             to="/login"
-            className="text-cyan-400 hover:underline"
+            className="text-[#6B8FB8] hover:underline"
           >
             Login
           </Link>

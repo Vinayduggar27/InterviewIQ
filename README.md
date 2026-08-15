@@ -210,7 +210,7 @@ The Dashboard provides an overview of interview preparation progress.
 ## Artificial Intelligence
 
 - Groq AI
-- Llama 3.3 70B Versatile
+- model: "openai/gpt-oss-120b",
 
 ---
 

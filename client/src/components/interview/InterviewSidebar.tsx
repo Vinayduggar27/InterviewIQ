@@ -1,48 +1,64 @@
-export default function InterviewSidebar() {
+interface InterviewSidebarProps {
+  currentQuestion: number;
+  totalQuestions: number;
+}
+
+export default function InterviewSidebar({
+  currentQuestion,
+  totalQuestions,
+}: InterviewSidebarProps) {
+  const progress =
+    ((currentQuestion + 1) / totalQuestions) * 100;
+
   return (
     <div className="space-y-6">
-
-      <div className="bg-slate-900 rounded-xl p-5">
-
-        <h2 className="text-xl font-semibold mb-4">
+      {/* Interview Progress */}
+      <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-5">
+        <h2 className="mb-5 text-xl font-semibold text-white">
           Interview Progress
         </h2>
 
-        <div className="w-full bg-slate-800 rounded-full h-3">
-
+        {/* Progress Bar */}
+        <div className="h-3 w-full overflow-hidden rounded-full bg-[#181E25]">
           <div
-            className="bg-cyan-400 h-3 rounded-full"
-            style={{ width: "10%" }}
+            className="h-full rounded-full bg-[#4F7CAC] transition-all duration-300"
+            style={{ width: `${progress}%` }}
           />
-
         </div>
 
-        <p className="text-slate-400 mt-3">
-          Question 1 of 10
+        <p className="mt-3 text-sm text-[#9AA3AD]">
+          Question {currentQuestion + 1} of {totalQuestions}
         </p>
-
       </div>
 
-      <div className="bg-slate-900 rounded-xl p-5">
-
-        <h2 className="text-xl font-semibold mb-4">
-          Tips
+      {/* Interview Tips */}
+      <div className="rounded-xl border border-[#2F3D4B] bg-[#151B22] p-5">
+        <h2 className="mb-5 text-xl font-semibold text-white">
+          Interview Tips
         </h2>
 
-        <ul className="space-y-3 text-slate-400 text-sm">
+        <ul className="space-y-4 text-sm text-[#9AA3AD]">
+          <li className="flex gap-3">
+            <span className="text-[#6B8FB8]">✓</span>
+            <span>Speak clearly.</span>
+          </li>
 
-          <li>✔ Speak clearly.</li>
+          <li className="flex gap-3">
+            <span className="text-[#6B8FB8]">✓</span>
+            <span>Maintain eye contact.</span>
+          </li>
 
-          <li>✔ Maintain eye contact.</li>
+          <li className="flex gap-3">
+            <span className="text-[#6B8FB8]">✓</span>
+            <span>Give structured answers.</span>
+          </li>
 
-          <li>✔ Give structured answers.</li>
-
-          <li>✔ Think before answering.</li>
-
+          <li className="flex gap-3">
+            <span className="text-[#6B8FB8]">✓</span>
+            <span>Think before answering.</span>
+          </li>
         </ul>
-
       </div>
-
     </div>
   );
 }

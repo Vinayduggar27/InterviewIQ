@@ -14,56 +14,111 @@ type Props = {
 
 export default function RecentInterviews({ interviews }: Props) {
   return (
-    <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6">
-      <h2 className="text-2xl font-semibold mb-6">
-        Recent Interviews
-      </h2>
+    <div className="bg-[#151B22] border border-[#2F3D4B] rounded-xl p-6 min-h-[360px]">
+
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-semibold text-white">
+          Recent Interviews
+        </h2>
+
+        <span className="text-sm text-[#9AA3AD]">
+          Latest 5
+        </span>
+      </div>
 
       {interviews.length === 0 ? (
-        <p className="text-slate-400">
-          No interviews yet.
-        </p>
+        <div className="flex items-center justify-center h-56">
+          <p className="text-[#9AA3AD]">
+            No interviews yet.
+          </p>
+        </div>
       ) : (
-        <table className="w-full">
-          <thead>
-            <tr className="text-left text-slate-400">
-              <th>Company</th>
-              <th>Role</th>
-              <th>Score</th>
-              <th>Date</th>
-            </tr>
-          </thead>
+        <div className="overflow-x-auto">
 
-          <tbody>
-            {interviews.slice(0, 5).map((item) => (
-              <tr
-                key={item.id}
-                className="border-t border-slate-800 hover:bg-slate-800 transition"
-              >
-                <td className="py-4">
-                  <Link
-                    to={`/interview/details/${item.id}`}
-                    className="text-cyan-400 hover:underline"
-                  >
-                    {item.company}
-                  </Link>
-                </td>
+          <table className="w-full">
 
-                <td>{item.role}</td>
+            <thead>
+              <tr className="border-b border-[#2F3D4B] text-left">
 
-                <td>
-                  {item.overallScore !== null
-                    ? `${item.overallScore}%`
-                    : "-"}
-                </td>
+                <th className="pb-4 text-xs font-medium text-[#9AA3AD] uppercase">
+                  Company
+                </th>
 
-                <td>
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
+                <th className="pb-4 text-xs font-medium text-[#9AA3AD] uppercase">
+                  Role
+                </th>
+
+                <th className="pb-4 text-xs font-medium text-[#9AA3AD] uppercase">
+                  Score
+                </th>
+
+                <th className="pb-4 text-xs font-medium text-[#9AA3AD] uppercase">
+                  Date
+                </th>
+
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+
+              {interviews.slice(0, 5).map((item) => (
+                <tr
+                  key={item.id}
+                  className="
+                    border-b border-[#2F3D4B]
+                    last:border-b-0
+                    hover:bg-[#181E25]
+                    transition
+                  "
+                >
+
+                  <td className="py-4">
+
+                    <Link
+                      to={`/interview/details/${item.id}`}
+                      className="
+                        text-[#6B8FB8]
+                        hover:text-[#8BA8C7]
+                        transition
+                        font-medium
+                      "
+                    >
+                      {item.company}
+                    </Link>
+
+                  </td>
+
+                  <td className="py-4 text-[#DCE1E6]">
+                    {item.role}
+                  </td>
+
+                  <td className="py-4">
+
+                    {item.overallScore !== null ? (
+                      <span className="text-white font-medium">
+                        {item.overallScore}%
+                      </span>
+                    ) : (
+                      <span className="text-[#9AA3AD]">
+                        Pending
+                      </span>
+                    )}
+
+                  </td>
+
+                  <td className="py-4 text-[#9AA3AD]">
+                    {new Date(item.createdAt).toLocaleDateString()}
+                  </td>
+
+                </tr>
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
       )}
     </div>
   );

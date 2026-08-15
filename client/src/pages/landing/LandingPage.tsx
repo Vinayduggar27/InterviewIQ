@@ -11,17 +11,26 @@ import Footer from "../../components/layout/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="bg-slate-950 text-white">
+    <div className="min-h-screen bg-[#12181F] text-white">
       <Navbar />
+
       <Hero />
+
       <Companies />
-       <Stats />
-       <Features />
-       <HowItWorks />
-       <Testimonials />
-       <FAQ />
-       <Cta />
-       <Footer />
+
+      <Stats />
+
+      <Features />
+
+      <HowItWorks />
+
+      <Testimonials />
+
+      <FAQ />
+
+      <Cta />
+
+      <Footer />
     </div>
   );
 }
