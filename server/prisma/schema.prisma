@@ -14,10 +14,16 @@ model User {
   password       String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
+
   avatar         String?
+  university     String?
+  course         String?
+  github         String?
+  linkedin       String?
   experience     String?
   role           String?
   skills         String?
+
   interviews     Interview[]
   resumeAnalyses ResumeAnalysis[]
 }
