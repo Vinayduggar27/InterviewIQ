@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../services/api";
 
 import ATSScore from "./ATSScore";
 import Strengths from "./Strengths";
@@ -110,16 +110,15 @@ const ResumeUpload = () => {
       const token =
         localStorage.getItem("token");
 
-      const { data } =
-        await axios.post<ResumeAnalysis>(
-          "http://localhost:5000/api/resume/analyze",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+      const { data } = await api.post<ResumeAnalysis>(
+  "/resume/analyze",
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       setAnalysis(data);
     } catch (err: any) {
